@@ -12,6 +12,7 @@
 </head>
 <body>
     <h1>Header</h1>
-    <p>This is a paragraph</p>
+    <p>This is a paragraph</p><br>
+<a href="{% url 'logout' %}">Logout from {{request.user}}</a>
 </body>
 </html>

@@ -15,7 +15,10 @@ def loginpage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("teacherRater/index")
+            return redirect("index")
+        else:
+            messages.info(request, "Username or Password is incorrect")
+
     return render(request, 'login/login.html')
 
 
@@ -35,3 +38,9 @@ def register(request):
             return redirect("login")
 
     return render(request, 'login/register.html', {"form": form})
+
+
+#logout from account
+def logoutuser(request):
+    logout(request)
+    return redirect("login")
