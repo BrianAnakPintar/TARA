@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ teacherName }}</title>
+    <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">T A R A</a>
+        <ul class="navigation">
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Highest Rated</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search Here!">
+        </div>
+    </nav>
+
+    <div class="mainProfileView">
+            <div class="profile-card-container">
+
+                <div class="banner-image">
+                    <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/C%23/Violet_Evergarden_Holds_C_Sharp_Book_Portuguese.png?raw=true">
+                </div>
+                <div class="profile-image">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="teacherPicture">
+                </div>
+                <div class="card-content">
+                    <h2>{{ teacherName }}</h2>
+                    <p>Guru kamu yang hebat sekali, pintar mengajar. Saya juga mengajar semua pelajaran, seperti matematika, science, biologi, fisika</p>
+                </div>
+
+            </div>
+        <div class="Rating">
+            <h2>Overall Rating: 5/5</h2>
+            <h2>Difficulty: 2/5</h2>
+            <h2>Interactivity: 4/5</h2>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
