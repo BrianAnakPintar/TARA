@@ -1,4 +1,4 @@
-# TARA
+# T.A.R.A
 The Amazing Rating Application.
 
 Rules:
