@@ -11,8 +11,30 @@
 
 </head>
 <body>
-    <h1>Header</h1>
-    <p>This is a paragraph</p><br>
-<a href="{% url 'logout' %}">Logout from {{request.user}}</a>
+    <nav>
+        <a href="#" class="logo">T A R A</a>
+        <ul class="navigation">
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Highest Rated</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="search">
+            <input class="search-input" type="text" placeholder="Search Here!">
+        </div>
+    </nav>
+
+    <div class="mainBody">
+        <h1>Search For A Teacher</h1>
+        <div class="MainSearch">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+                Go
+            </button>
+        </div>
+
+        <p>This is a paragraph</p><br>
+        <a href="{% url 'logout' %}">Logout from {{request.user}}</a>
+
+    </div>
 </body>
 </html>
