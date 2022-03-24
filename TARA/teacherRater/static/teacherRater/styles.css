@@ -3,18 +3,6 @@
     padding: 0;
 }
 
-:root {
-  --rad: .7rem;
-  --dur: .3s;
-  --color-dark: #2f2f2f;
-  --color-light: #fff;
-  --color-brand: #57bd84;
-  --font-fam: 'Lato', sans-serif;
-  --height: 5rem;
-  --btn-width: 6rem;
-  --bez: cubic-bezier(0, 0, 0.43, 1.49);
-}
-
 body{
     font-family: Arial;
 }
@@ -131,6 +119,7 @@ nav .search input{
     margin-top: 100px;
 }
 
+/* Main Searchbar */
 .MainSearch {
     width: 50%;
     display: flex;
@@ -177,4 +166,43 @@ nav .search input{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Profile Main Cards */
+.highSchoolList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card{
+    width: 300px;
+    height: 420px;
+    background-color: whitesmoke;
+    outline: solid 4px #21222d;
+    border-radius: 10px;
+}
+
+.main-card-image{
+    width: 300px;
+    height: 230px;
+    background-image: url("https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/D/Kunikida_Hanamaru_holding_Programming_in_D.jpg?raw=true");
+    background-repeat: no-repeat;
+    background-position: 0px;
+    background-size: cover;
+}
+
+.main-card-details{
+    width: 300px;
+    height: 190px;
+    background-color: #21222d;
+    border-radius: 0 30% 0 0;
+    color: white;
+}
+
+.main-card-rating{
+    color: goldenrod;
+    user-select: none;
 }
