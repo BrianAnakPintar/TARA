@@ -23,7 +23,13 @@
 
     {{form.errors}}
 
+
+
     <input type="submit" name="Create Account" value="Register Account"> <br>
+
+    {% if emailerror == True %}
+    <p>Email is already taken</p>
+    {% endif %}
 
 </form>
 Already got an account? <a href="javascript:history.back()">Login</a>

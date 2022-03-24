@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-
+from django.db import IntegrityError
 
 # login page
 def loginpage(request):
@@ -23,18 +23,20 @@ def loginpage(request):
 # register page
 def register(request):
     form = CreateUserForm()
-
-    # if input is valid, save form (Usernames unused, hash pass, etc)
+    isEmailtaken = False
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            try:
+                form.save() #make account
+                messages.success(request, "Account successfully made")
+                return redirect("login")
 
-            messages.success(request, "Account successfully created")
+            except IntegrityError:
+                isEmailtaken = True
+                return render(request, 'login/register.html', {"form": form, "emailerror":isEmailtaken}) # email error
 
-            return redirect("login")
-
-    return render(request, 'login/register.html', {"form": form})
+    return render(request, 'login/register.html', {"form": form, "emailerror": isEmailtaken})  # run main function
 
 
 #logout from account
