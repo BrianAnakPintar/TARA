@@ -3,33 +3,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
     <link href="{% static 'login/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-<div class="center">
-<h1>Login</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    <div class="txt_field">
-   <input type="text" name="username" required>
-        <span></span>
-          <label>Username</label>
+    <div class="center">
+        <h1>Login</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+                <input class="btn login-btn" type="submit" value="Login"> <br>
+                <div class="signup_link"> Don't have an account? <a href="register">Register</a>
+            </div>
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </form>
     </div>
-
-    <div class="txt_field">
-    <input type="password" name="password" required>
-         <span></span>
-          <label>Password</label>
-    </div>
-    <input class="btn login-btn" type="submit" value="Login"> <br>
-    <div class="signup_link">
-    Don't have an account? <a href="register">Register</a>
-    </div>
-{%for message in messages%}
-    <p>{{message}}</p>
-{%endfor%}
-</div>
-</form>
 </body>
 </html>

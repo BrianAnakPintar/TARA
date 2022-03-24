@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -10,6 +9,7 @@ body{
   padding: 0;
   height: 100vh;
   overflow: hidden;
+  background-image: url("https://raw.githubusercontent.com/cat-milk/Anime-Girls-Holding-Programming-Books/master/Python/mai_sakurajima_holding_python_programming_3in1_book.png");
 }
 .center{
   position: absolute;
@@ -59,7 +59,7 @@ form .txt_field{
   position: absolute;
   top: 40px;
   left: 0;
-  width: 0%;
+  width: 0;
   height: 2px;
   background: #2691d9;
   transition: .5s;
