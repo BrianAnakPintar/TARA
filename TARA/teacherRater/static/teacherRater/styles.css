@@ -175,6 +175,7 @@ nav .search input{
     gap: 50px;
     justify-content: center;
     align-items: center;
+    padding-top: 50px;
 }
 
 .main-card{
@@ -209,4 +210,6 @@ nav .search input{
 
 .Logout{
     color: white;
+    text-decoration: none;
+
 }
