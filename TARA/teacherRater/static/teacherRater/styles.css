@@ -204,5 +204,5 @@ nav .search input{
 
 .main-card-rating{
     color: goldenrod;
-    user-select: none;
+    font-size: 100%;
 }
