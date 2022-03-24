@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt  # csrf error
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 
 # login page
-@csrf_exempt
 def loginpage(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -23,7 +21,6 @@ def loginpage(request):
 
 
 # register page
-@csrf_exempt
 def register(request):
     form = CreateUserForm()
 
