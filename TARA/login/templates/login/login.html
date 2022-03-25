@@ -3,31 +3,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="{% static 'login/styles.css' %}" rel="stylesheet">
+    <title>Login</title>>
 </head>
 <body>
-    <div class="center">
-        <h1>Login</h1>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <div class="txt_field">
-                <input type="text" name="username" required>
-                <span></span>
-                <label>Username</label>
-            </div>
-            <div class="txt_field">
-                <input type="password" name="password" required>
-                <span></span>
-                <label>Password</label>
-            </div>
-                <input class="btn login-btn" type="submit" value="Login"> <br>
-                <div class="signup_link"> Don't have an account? <a href="register">Register</a>
-            </div>
+        {% block content %}
+
+
+    <div class="global-container">
+        <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Log in to Django</h3>
+            {% if messages %}
+
             {% for message in messages %}
-                <p>{{message}}</p>
+            <div class="alert alert-info">
+                {{ message }}
+            </div>
             {% endfor %}
-        </form>
+
+        {% endif %}
+            <div class="card-text">
+                <!--
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+                <form method="post" >
+                    {% csrf_token %}
+                    <!-- to error: add class "has-danger" -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" name="username" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+                        <input type="password" name="password" class="form-control form-control-sm" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+                    <div class="sign-up">
+                        Don't have an account? <a href="register">Create One</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+    </div>
+
+
+    {% endblock %}
 </body>
 </html>

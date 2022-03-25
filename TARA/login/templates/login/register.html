@@ -6,33 +6,56 @@
 </head>
 <body>
 
-<h1> Register </h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.username.label}}
-    {{form.username}} <br>
-
-    {{form.email.label}}
-    {{form.email}} <br>
-
-    {{form.password1.label}}
-    {{form.password1}} <br>
-
-    {{form.password2.label}}
-    {{form.password2}} <br><br>
-
-    {{form.errors}}
+{% block content %}
 
 
+    <div class="global-container">
+        <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Register in to Django</h3>
+            <div class="card-text">
+                {% if messages %}
 
-    <input type="submit" name="Create Account" value="Register Account"> <br>
+                        {% for message in messages %}
+                        <div class="alert alert-info">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
 
-    {% if emailerror == True %}
-    <p>Email is already taken</p>
-    {% endif %}
+                    {% endif %}
+                <!--
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+                <form method="post">
+                    {%  csrf_token %}
 
-</form>
-Already got an account? <a href="javascript:history.back()">Login</a>
 
+                    <!-- to error: add class "has-danger" -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" name="username" class="form-control form-control-sm" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" name="email" class="form-control form-control-sm" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control form-control-sm">
+                    </div>
+                    <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-2">Sign in</button>
+
+                    <div class="sign-up mt-2">
+                        Already have an account? <a href="javascript:history.back()">Sign ine</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    {% endblock %}
 </body>
 </html>
