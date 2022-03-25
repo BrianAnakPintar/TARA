@@ -22,10 +22,11 @@
           <label>Password</label>
     </div>
 
-    {%for message in messages%}
-    {{message}}
-    {%endfor%}
-    <br>
+    <div class="errorMessages">
+        {%for message in messages%}
+        {{message}}
+        {%endfor%}
+    </div>
 
     <input class="btn login-btn" type="submit" value="Login"> <br>
 

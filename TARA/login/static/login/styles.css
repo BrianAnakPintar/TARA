@@ -9,7 +9,7 @@ body{
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background-image: url("https://raw.githubusercontent.com/cat-milk/Anime-Girls-Holding-Programming-Books/master/Python/mai_sakurajima_holding_python_programming_3in1_book.png");
+  background: #d5f6eb;
 }
 .center{
   position: absolute;
@@ -109,4 +109,13 @@ input[type="submit"]:hover{
 }
 .signup_link a:hover{
   text-decoration: underline;
+}
+
+.errorMessages{
+  background: #ffe2e2;
+  text-align: center;
+  font-weight: bold;
+  color: #d02c2c;
+  border-radius: 2px;
+  margin: 5px;
 }
