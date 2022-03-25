@@ -29,11 +29,12 @@
             </button>
         </div>
         <div class="highSchoolList">
+            {% for teacher in teacherList %}
             <div class="main-card">
-                <div class="main-card-image"></div>
+                <div class="main-card-image" style="background-image: url({{ teacher.picture }})"></div>
                 <div class="main-card-details">
                     <div class="main-card-name">
-                        <h1>Uli Gabriella Jane Patricia Manullang</h1>
+                        <h1>{{ teacher.name }}</h1>
                     </div>
                     <div class="main-card-rating">
                         <h3>Overall Rating:</h3>
@@ -41,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </body>

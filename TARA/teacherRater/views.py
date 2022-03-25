@@ -10,7 +10,10 @@ from teacherRater.forms import ratingForms
 
 @login_required(login_url='login')
 def index(request):
-    return render(request, "teacherRater/index.html")
+    teachersList = teacherProfile.objects.all()
+    return render(request, "teacherRater/index.html", {
+        "teacherList": teachersList
+    })
 
 
 @login_required(login_url='login')
