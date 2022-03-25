@@ -1,26 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Verification</title>
+    <link href="{% static 'login/styles.css' %}" rel="stylesheet">
 </head>
 <body>
     {% block content %}
 
-
-
-    <div class="global-container">
+    <div class="center">
         <div class="card login-form">
         <div class="card-body">
-            <h3 class="card-title text-center">We have sent an email to you </h3>
-            <div class="card-text text-center">
-                Please check your mail
-            </div>
+            <h2>Verification Email Has Been Sent</h2>
+
+            <p style="center">Before continuing into our page, please verify your account by clicking the link that has been sent to your email. You may close this page.</p>
         </div>
     </div>
     </div>
-
-
     {% endblock %}
 </body>
 </html>
