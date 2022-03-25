@@ -7,12 +7,10 @@
 <body>
 
 {% block content %}
-
-
     <div class="global-container">
         <div class="card login-form">
         <div class="card-body">
-            <h3 class="card-title text-center">Register in to Django</h3>
+            <h3 class="card-title text-center">Register to TARA</h3>
             <div class="card-text">
                 {% if messages %}
 
@@ -27,8 +25,6 @@
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
                 <form method="post">
                     {%  csrf_token %}
-
-
                     <!-- to error: add class "has-danger" -->
                     <div class="form-group">
                         <label for="exampleInputEmail1">Username</label>
@@ -44,10 +40,10 @@
                     </div>
                     <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-2">Sign in</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-2">Register</button>
 
                     <div class="sign-up mt-2">
-                        Already have an account? <a href="javascript:history.back()">Sign ine</a>
+                        Already have an account? <a href="javascript:history.back()">Sign in</a>
                     </div>
                 </form>
             </div>
