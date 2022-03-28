@@ -1,19 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Error Detected</title>
+        <link href="{% static 'login/styles.css' %}" rel="stylesheet">
 </head>
 <body>
     {% block content %}
 
 
-    <div class="global-container">
+  <div class="center">
         <div class="card login-form">
         <div class="card-body">
-            <h3 class="card-title text-center">Error</h3>
+            <h2>An Error Has Occured</h2>
 
-            <a href="login" class="btn btn-success">Back</a>
+            <div class="signup_link">
+                <a href="{% url 'login'%}">Back</a>
+            </div>
 
             </div>
         </div>
