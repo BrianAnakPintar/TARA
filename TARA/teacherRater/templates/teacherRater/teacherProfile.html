@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ teacherName }}</title>
+    <title>{{ teacher.name }} - TARA</title>
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -18,20 +18,11 @@
     </nav>
 
     <div class="mainProfileView">
-            <div class="profile-card-container">
-
-                <div class="banner-image">
-                    <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/C%23/Violet_Evergarden_Holds_C_Sharp_Book_Portuguese.png?raw=true">
-                </div>
-                <div class="profile-image">
-                    <img src={{ teacher.picture }}>
-                </div>
-                <div class="card-content">
-                    <h2>{{ teacherName }}</h2>
-                    <p>Guru kamu yang hebat sekali, pintar mengajar. Saya juga mengajar semua pelajaran, seperti matematika, science, biologi, fisika</p>
-                </div>
-
-            </div>
+        <div class="profile-part">
+            <img src={{ teacher.picture }} alt="profilePicture">
+            <h1>{{ teacher.name }}</h1>
+        </div>
+    </div>
         <div class="Rating">
             <h2>Overall Rating: 5/5</h2>
             <h2>Difficulty: 2/5</h2>

@@ -13,20 +13,41 @@ class teacherProfile(models.Model):
     def __str__(self):
         return f"{self.id}|{self.name}|Active:{self.isActive}"
 
-RatingChoices = [
-    (1, '1 - Awful'),
-    (2, '2 - Ok'),
-    (3, '3 - Good'),
-    (4, '4 - Very Good'),
-    (5, '5 - Amazing!')
+understandabilityChoices = [
+    (1, 'Very hard to understand'),
+    (2, 'Hard to understand'),
+    (3, 'Understandable'),
+    (4, 'Easy to understand'),
+    (5, 'I can understand everything the teacher say!')
 ]
+
+communicationChoices = [
+    (1, 'Teacher rarely communicates'),
+    (2, ' '),
+    (3, ' '),
+    (4, ' '),
+    (5, ' ')
+]
+
+RatingChoices = [
+    (1, 'Awful'),
+    (2, 'Ok'),
+    (3, 'Good'),
+    (4, 'Very Good'),
+    (5, 'Amazing!')
+]
+
+
+
 
 
 class reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     teacher = models.ForeignKey(teacherProfile, on_delete=models.CASCADE)
     isAnonymous = models.BooleanField(default=True)
-    rating = models.PositiveSmallIntegerField(choices=RatingChoices)
+    understandability = models.PositiveSmallIntegerField(choices=understandabilityChoices)
+    communication = models.PositiveSmallIntegerField(choices=communicationChoices)
+
     commentReview = models.TextField(max_length=3000, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
