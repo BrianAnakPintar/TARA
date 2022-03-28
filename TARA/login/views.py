@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login, logout
 
 
+
 def send_mail_after_registration(email, token):
     subject = 'Your accounts need to be verified'
     message = 'Hi paste the link to verify your account http://127.0.0.1:8000/login/verify/'+token
@@ -27,7 +28,6 @@ def loginpage(request):
             return redirect('login')
 
         profile_obj = Profile.objects.filter(user=user_obj).first()
-
         if not profile_obj.is_verified:
             messages.success(request, 'Profile is not verified check your mail.')
             return redirect('login')
@@ -54,6 +54,9 @@ def register(request):
             return redirect(request, 'login/register.html')
         if User.objects.filter(email = email).first():
             messages.success(request, "Email is taken")
+            return redirect(request, 'login/register.html')
+        if len(password) < 8:
+            messages.success(request, "Password should contain at least 8 characters")
             return redirect(request, 'login/register.html')
 
         user_obj = User(username=username, email=email)
@@ -97,20 +100,12 @@ def verify(request, auth_token):
         return redirect('login')
 
 
-def error_page(request):
-    return render(request, 'login/error.html')
-
-
-
-
-# register page
-
-
-
-
-
-
 #logout from account
 def logoutuser(request):
     logout(request)
     return redirect("login")
+
+def error_page(request):
+    return render(request, 'login/error.html')
+
+

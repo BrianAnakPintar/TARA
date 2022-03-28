@@ -21,7 +21,7 @@ body{
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
-.center h1{
+.center h1, h2, p{
   text-align: center;
   padding: 20px 0;
   border-bottom: 1px solid silver;
