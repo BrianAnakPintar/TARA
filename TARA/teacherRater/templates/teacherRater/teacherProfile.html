@@ -14,9 +14,7 @@
             <li><a href="#">Highest Rated</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
-        <div class="search">
-            <input type="text" placeholder="Search Here!">
-        </div>
+        <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
 
     <div class="mainProfileView">
@@ -26,7 +24,7 @@
                     <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/C%23/Violet_Evergarden_Holds_C_Sharp_Book_Portuguese.png?raw=true">
                 </div>
                 <div class="profile-image">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="teacherPicture">
+                    <img src={{ teacher.picture }}>
                 </div>
                 <div class="card-content">
                     <h2>{{ teacherName }}</h2>
@@ -39,16 +37,25 @@
             <h2>Difficulty: 2/5</h2>
             <h2>Interactivity: 4/5</h2>
         </div>
+    </div>
+
+    <div class="reviews">
+        <!-- Reviews -->
+        <div class="student-reviews">
+            {% for review in reviews %}
+
+                <div class="review-card">
+                    <h1>{{ review.commentReview }}</h1>
+                </div>
+            {% endfor %}
+        </div>
+
         <form method="post">
             {% csrf_token %}
             {{ form }}
             <button type="submit">Submit</button>
         </form>
     </div>
-
-
-
-
 
 </body>
 </html>
