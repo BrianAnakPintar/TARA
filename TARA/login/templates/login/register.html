@@ -6,42 +6,42 @@
         <link href="{% static 'login/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-<div class="center">
-<h1>Register</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    <div class="txt_field">
-   <input type="text" name="username" required>
-        <span></span>
-          <label>Username</label>
+    <div class="center-new">
+        <div class="rightSide">
+            <h1>Register</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input type="text" name="username" required>
+                        <span></span>
+                        <label>Username</label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="email" name="email" required>
+                        <span></span>
+                        <label>Email</label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="password" name="password" required>
+                        <span></span>
+                        <label>Password</label>
+                </div>
+
+                <div class="errorMessages">
+                    {%for message in messages%}
+                    {{message}}
+                    {%endfor%}
+                </div>
+                <input class="btn register-btn" type="submit" value="Register">
+            </form>
+        <div class="signup_link">
+            Already got an account? <a href="{% url 'login'%}">Login</a>
+        </div>
+        </div>
+        <div class="leftSideRegister"></div>
+
     </div>
-
-    <div class="txt_field">
-   <input type="email" name="email" required>
-        <span></span>
-          <label>Email</label>
-    </div>
-
-    <div class="txt_field">
-    <input type="password" name="password" required>
-         <span></span>
-          <label>Password</label>
-    </div>
-
-    <div class="errorMessages">
-        {%for message in messages%}
-        {{message}}
-        {%endfor%}
-    </div>
-
-    <input class="btn register-btn" type="submit" value="Register"> <br>
-
-
-</form>
-    <div class="signup_link">
-    Already got an account? <a href="{% url 'login'%}">Login</a>
-    </div>
-
-</div>
 </body>
 </html>

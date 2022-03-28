@@ -2,42 +2,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Login in - TARA</title>
         <link href="{% static 'login/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-<div class="center">
-<h1>Login</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    <div class="txt_field">
-   <input type="text" name="username" required>
-        <span></span>
-          <label>Username</label>
+<div class="center-new">
+    <div class="leftSideLogin">
+        <div class="weird-ass-effect"></div>
+    </div>
+    <div class="rightSide">
+        <h1>TARA - Login</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                    <span></span>
+                    <label>Username</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="password" name="password" required>
+                     <span></span>
+                    <label>Password</label>
+            </div>
+
+            <div class="signup_link_pass">
+                <a href="reset_password">Forgot Password?</a>
+            </div>
+
+            <div class="errorMessages">
+                {%for message in messages%}
+                    {{message}}
+                {%endfor%}
+            </div>
+
+            <input class="btn login-btn" type="submit" value="Login"> <br>
+        </form>
+
+
+        <div class="signup_link">
+            Don't have an account? <a href="register">Register</a>
+        </div>
     </div>
 
-    <div class="txt_field">
-    <input type="password" name="password" required>
-         <span></span>
-          <label>Password</label>
-    </div>
 
-    <div class="errorMessages">
-        {%for message in messages%}
-        {{message}}
-        {%endfor%}
-    </div>
-
-    <input class="btn login-btn" type="submit" value="Login"> <br>
-
-
-</form>
-    <div class="signup_link">
-    Forgotten your password? <a href="reset_password">Reset Password</a>
-    </div>
-    <div class="signup_link">
-    Don't have an account? <a href="register">Register</a>
-    </div>
 
 </div>
 </body>

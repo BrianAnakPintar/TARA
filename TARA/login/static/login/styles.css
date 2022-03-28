@@ -9,7 +9,7 @@ body{
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background: #d5f6eb;
+  background: #e1f2f5;
 }
 .center{
   position: absolute;
@@ -21,7 +21,33 @@ body{
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
+
+.center-new{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.rightSide h1, h2, p{
+
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+}
+.rightSide form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
 .center h1, h2, p{
+
   text-align: center;
   padding: 20px 0;
   border-bottom: 1px solid silver;
@@ -30,6 +56,7 @@ body{
   padding: 0 40px;
   box-sizing: border-box;
 }
+
 form .txt_field{
   position: relative;
   border-bottom: 2px solid #adadad;
@@ -103,6 +130,20 @@ input[type="submit"]:hover{
   font-size: 16px;
   color: #666666;
 }
+
+.signup_link_pass{
+  margin-top: -15px;
+  margin-left: 5px;
+  padding-bottom: 15px;
+  font-size: 14px;
+  color: #666666;
+}
+
+.signup_link_pass a{
+  color: #2691d9;
+  text-decoration: none;
+}
+
 .signup_link a{
   color: #2691d9;
   text-decoration: none;
@@ -118,4 +159,37 @@ input[type="submit"]:hover{
   color: #d02c2c;
   border-radius: 2px;
   margin: 5px;
+}
+
+.leftSideLogin{
+  background-image: url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150%;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+
+.leftSideRegister{
+  background-image: url("https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/AI/Fujiwara_Chika_Deep_Learning.png?raw=true");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 200%;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+
+@media only screen and (max-width: 900px) {
+  .center{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: 0% 100%;
+}
 }
