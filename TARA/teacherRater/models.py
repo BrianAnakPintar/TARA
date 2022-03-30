@@ -14,21 +14,31 @@ class teacherProfile(models.Model):
         return f"{self.id}|{self.name}|Active:{self.isActive}"
 
 understandabilityChoices = [
-    (1, 'Very hard to understand'),
-    (2, 'Hard to understand'),
-    (3, 'Understandable'),
-    (4, 'Easy to understand'),
-    (5, 'I can understand everything the teacher say!')
+    (1, '1|Hard to understand'),
+    (2, '2|Understandable'),
+    (3, '3|Easy to understand'),
+    (4, '4|Very easy to understand'),
+    (5, '5|I can understand everything the teacher say!')
 ]
 
 communicationChoices = [
-    (1, 'Teacher rarely communicates'),
-    (2, ' '),
-    (3, ' '),
-    (4, ' '),
-    (5, ' ')
+    (1, '1|Teacher rarely communicates'),
+    (2, '2|Teacher communicates sometimes'),
+    (3, '3|'),
+    (4, '4|'),
+    (5, '5|')
 ]
 
+teachingMethodChoices = [
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+
+]
+
+# Should prob delete this
 RatingChoices = [
     (1, 'Awful'),
     (2, 'Ok'),
@@ -37,20 +47,16 @@ RatingChoices = [
     (5, 'Amazing!')
 ]
 
-
-
-
-
 class reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     teacher = models.ForeignKey(teacherProfile, on_delete=models.CASCADE)
     isAnonymous = models.BooleanField(default=True)
-    understandability = models.PositiveSmallIntegerField(choices=understandabilityChoices)
-    communication = models.PositiveSmallIntegerField(choices=communicationChoices)
-
+    understandability = models.PositiveSmallIntegerField(choices=understandabilityChoices, default=1)
+    communication = models.PositiveSmallIntegerField(choices=communicationChoices, default=1)
+    teachingMethod = models.PositiveSmallIntegerField(choices=teachingMethodChoices, default=1)
     commentReview = models.TextField(max_length=3000, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.teacher}|Rating:{self.rating}"
+        return f"{self.teacher}|U:{self.understandability} C:{self.communication} T:{self.teachingMethod}"
 

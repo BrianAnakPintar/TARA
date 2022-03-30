@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import login_required
 from teacherRater.models import teacherProfile, reviews
 from teacherRater.forms import ratingForms
 
-from django.core.exceptions import PermissionDenied
-
+from django.db.models import Avg
 # Create your views here.
 
 @login_required(login_url='login')
@@ -19,22 +18,33 @@ def index(request):
 
 @login_required(login_url='login')
 def TeacherProfile(request, teacher_id):
+    # Grab all necessary data (user, teacher, and if user has reviewed)
     currTeacher = teacherProfile.objects.get(pk=teacher_id)
     currUser = request.user
     teacherReviews = reviews.objects.filter(teacher_id=teacher_id)
-
     userHasReviewed = teacherReviews.filter(user_id=currUser)
 
+    # Create an average rating
+    ratingData = teacherReviews.aggregate(avgUnderstand=Avg('understandability'), avgComms=Avg('communication'), avgTeachMethod=Avg('teachingMethod'))
+    ratingData['avgUnderstand'] = round(ratingData['avgUnderstand'], 2)
+    ratingData['avgComms'] = round(ratingData['avgComms'], 2)
+    ratingData['avgTeachMethod'] = round(ratingData['avgTeachMethod'], 2)
+
+    overallReview = round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod'])/3,2)
     if request.method == 'POST':
+        # If userHasReviewed has a value, then he has reviewed
         if userHasReviewed:
             # This should return a YOU HAVE ALREADY REVIEWED SCREEN
             return HttpResponse("You already reviewed dummy")
         form = ratingForms(request.POST)
         if form.is_valid():
+            # Grab information from forms, and save it into the database
             currCommentReview = form.cleaned_data['commentsReview']
-            currRating = form.cleaned_data['rate']
+            cUnderstand = form.cleaned_data['understandability']
+            cComms = form.cleaned_data['communication']
+            cTeachMethod = form.cleaned_data['teachingMethod']
             anonym = form.cleaned_data['makeAnonymous']
-            reviewComment = reviews(user=currUser, teacher=currTeacher, isAnonymous=anonym, rating=currRating,
+            reviewComment = reviews(user=currUser, teacher=currTeacher, isAnonymous=anonym, understandability=cUnderstand, communication=cComms, teachingMethod=cTeachMethod,
                                     commentReview=currCommentReview)
             reviewComment.save()
     else:
@@ -43,5 +53,7 @@ def TeacherProfile(request, teacher_id):
     return render(request, "teacherRater/teacherProfile.html", {
         "teacher": currTeacher,
         "form": form,
-        "reviews": teacherReviews
+        "reviews": teacherReviews,
+        "ratings": ratingData,
+        "overallRating": overallReview
     })
