@@ -24,19 +24,56 @@
         </div>
     </div>
         <div class="Rating">
-            <h2>Overall Rating: 5/5</h2>
-            <h2>Difficulty: 2/5</h2>
-            <h2>Interactivity: 4/5</h2>
+            <h2>Overall Rating: {{ overallRating }}</h2>
+            <h2>Understandability: {{ ratings.avgUnderstand }}</h2>
+            <h2>Communication: {{ ratings.avgComms}}</h2>
+            <h2>Teaching Method: {{ ratings.avgTeachMethod }}</h2>
         </div>
     </div>
 
     <div class="reviews">
         <!-- Reviews -->
-        <div class="student-reviews">
             {% for review in reviews %}
+                <div class="comments">
+                    <div class="comments-informations">
+                        <div class="comments-date-name-part">
+                            <div class="comments-name">
+                                <!-- If Is Anonymous then put Anonymous, else Put user -->
+                                {% if review.isAnonymous %}
+                                    <h2>Anonymous</h2>
+                                {% else %}
+                                    <h2>{{ review.user }}</h2>
+                                {% endif %}
+                            </div>
+                            <div class="comments-date">
+                                <h3>{{ review.date }}</h3>
+                            </div>
+                        </div>
+                    <div class="comments-text">
+                        <p>{{ review.commentReview }}</p>
+                    </div>
+                    </div>
+                <div class="comments-rating">
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ review.understandability }}</h1>
+                        </div>
+                        <h4>Understandability</h4>
+                    </div>
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ review.communication }}</h1>
+                        </div>
+                        <h4>Communication</h4>
+                    </div>
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ review.teachingMethod }}</h1>
+                        </div>
+                        <h4>Teaching Method</h4>
+                    </div>
+                    </div>
 
-                <div class="review-card">
-                    <h1>{{ review.commentReview }}</h1>
                 </div>
             {% endfor %}
         </div>
@@ -46,7 +83,6 @@
             {{ form }}
             <button type="submit">Submit</button>
         </form>
-    </div>
 
 </body>
 </html>
