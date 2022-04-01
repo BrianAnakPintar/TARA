@@ -10,9 +10,8 @@
     <nav>
         <a href="#" class="logo">T A R A</a>
         <ul class="navigation">
-            <li><a href="#">Teachers</a></li>
-            <li><a href="#">Highest Rated</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="{% url 'index' %}">Teachers</a></li>
+            <li><a href="#">About Us</a></li>
         </ul>
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
@@ -33,7 +32,7 @@
 
     <div class="reviews">
         <!-- Reviews -->
-            {% for review in reviews %}
+            {% for review in reviews reversed%}
                 <div class="comments">
                     <div class="comments-informations">
                         <div class="comments-date-name-part">
