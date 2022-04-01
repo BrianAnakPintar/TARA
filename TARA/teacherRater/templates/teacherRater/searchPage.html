@@ -7,6 +7,7 @@
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
 </head>
 <body>
+
     <nav>
         <a href="#" class="logo">T A R A</a>
         <ul class="navigation">
@@ -16,8 +17,28 @@
         </ul>
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
-    {% for teacher in search %}
-        <h1>{{ teacher.name }}</h1>
-    {% endfor %}
+
+
+<div class="highSchoolList">
+            {% for teacher in search %}
+            <div class="main-card">
+                <div class="main-card-image" style="background-image: url({{ teacher.picture }})"></div>
+                <div class="main-card-details">
+                    <div class="main-card-name">
+                        <h1>{{ teacher.name }}</h1>
+                    </div>
+                    <div class="main-card-rating">
+                        <h2>Overall Rating: 5/5</h2>
+                        <h4>Difficulty: 2/5</h4>
+                        <h4>Understandability: 4/5</h4>
+                    </div>
+                    <p>Subjects: {{ teacher.subjects }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
 </body>
 </html>
+
