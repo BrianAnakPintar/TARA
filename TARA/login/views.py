@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 
 def send_mail_after_registration(email, token):
     subject = 'Your accounts need to be verified'
-    message = 'Hi paste the link to verify your account http://127.0.0.1:8000/login/verify/'+token
+    message = 'Hi, click the link to verify your account http://127.0.0.1:8000/login/verify/'+token
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message, email_from, recipient_list,  fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=None)
