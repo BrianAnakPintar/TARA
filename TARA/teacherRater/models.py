@@ -1,17 +1,38 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+lessonChoices = [
+    ('ACC', 'Akuntansi'),
+    ('ART', 'Art'),
+    ('BI', 'Bahasa Indonesia'),
+    ('BS', 'Biblical Studies'),
+    ('BIO', 'Biologi'),
+    ('CIV', 'Civics'),
+    ('ECO', 'Ekonomi'),
+    ('ENG', 'English'),
+    ('PHYS', 'Fisika'),
+    ('GEO', 'Geologi'),
+    ('CHEM', 'Kimia'),
+    ('COMP', 'Komputer'),
+    ('MAN', 'Mandarin'),
+    ('MATH', 'Math'),
+    ('MUS', 'Music'),
+    ('HIS', 'Sejarah'),
+    ('SOS', 'Sosiologi'),
+    ('IDK', 'Other')
+]
+
 # Create your models here.
 class teacherProfile(models.Model):
     name = models.CharField(max_length=128)
     picture = models.URLField()
     comment = models.TextField(max_length=3000)
     education = models.CharField(max_length=255)
-    subjects = models.CharField(max_length=255)
+    subjects = models.CharField(max_length=4, choices=lessonChoices, default='IDK')
     isActive = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.id}|{self.name}|Active:{self.isActive}"
+        return f"{self.id}|{self.name}|Subject:{self.subjects}"
 
 understandabilityChoices = [
     (1, '1|Hard to understand'),
