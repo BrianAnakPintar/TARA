@@ -11,10 +11,18 @@ from django.db.models import Avg
 @login_required(login_url='login')
 def index(request):
     teachersList = teacherProfile.objects.all()
+    teachReview = reviews.objects.all()
     return render(request, "teacherRater/index.html", {
         "teacherList": teachersList
     })
 
+@login_required(login_url='login')
+def searchPage(request, searchname):
+    searchResult = teacherProfile.objects.filter(name__contains=searchname)
+    print(searchResult)
+    return render(request, "teacherRater/searchPage.html", {
+        "search": searchResult
+    })
 
 @login_required(login_url='login')
 def TeacherProfile(request, teacher_id):
@@ -24,13 +32,21 @@ def TeacherProfile(request, teacher_id):
     teacherReviews = reviews.objects.filter(teacher_id=teacher_id)
     userHasReviewed = teacherReviews.filter(user_id=currUser)
 
-    # Create an average rating
-    ratingData = teacherReviews.aggregate(avgUnderstand=Avg('understandability'), avgComms=Avg('communication'), avgTeachMethod=Avg('teachingMethod'))
-    ratingData['avgUnderstand'] = round(ratingData['avgUnderstand'], 2)
-    ratingData['avgComms'] = round(ratingData['avgComms'], 2)
-    ratingData['avgTeachMethod'] = round(ratingData['avgTeachMethod'], 2)
+    # Check if teacher has a review
+    if teacherReviews:
+        # Create Average
+        ratingData = teacherReviews.aggregate(avgUnderstand=Avg('understandability'), avgComms=Avg('communication'),
+                                              avgTeachMethod=Avg('teachingMethod'))
+        ratingData['avgUnderstand'] = round(ratingData['avgUnderstand'], 2)
+        ratingData['avgComms'] = round(ratingData['avgComms'], 2)
+        ratingData['avgTeachMethod'] = round(ratingData['avgTeachMethod'], 2)
+        overallReview = round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod']) / 3,
+                              2)
+    # The dictionary/Reviews are empty
+    else:
+        ratingData = {'avgUnderstand': 0, 'avgComms': 0, 'avgTeachMethod': 0}
+        overallReview = 0
 
-    overallReview = round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod'])/3,2)
     if request.method == 'POST':
         # If userHasReviewed has a value, then he has reviewed
         if userHasReviewed:
