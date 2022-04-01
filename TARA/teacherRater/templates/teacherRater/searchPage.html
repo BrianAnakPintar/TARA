@@ -11,9 +11,8 @@
     <nav>
         <a href="#" class="logo">T A R A</a>
         <ul class="navigation">
-            <li><a href="#">Teachers</a></li>
-            <li><a href="#">Highest Rated</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="{% url 'index' %}">Teachers</a></li>
+            <li><a href="#">About Us</a></li>
         </ul>
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
@@ -28,11 +27,9 @@
                         <h1>{{ teacher.name }}</h1>
                     </div>
                     <div class="main-card-rating">
-                        <h2>Overall Rating: 5/5</h2>
-                        <h4>Difficulty: 2/5</h4>
-                        <h4>Understandability: 4/5</h4>
+                        <h2>Rating: {{ teacher.overallRating }}</h2>
                     </div>
-                    <p>Subjects: {{ teacher.subjects }}</p>
+                    <h3>Subjects: {{ teacher.lesson }}</h3>
                 </div>
             </div>
             {% endfor %}

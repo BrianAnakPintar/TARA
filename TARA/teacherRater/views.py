@@ -8,20 +8,55 @@ from teacherRater.forms import ratingForms
 from django.db.models import Avg
 # Create your views here.
 
+def getOverallReviews(teacherReviews):
+    # Check if teacher has a review
+    if teacherReviews:
+        # Create Average
+        ratingData = teacherReviews.aggregate(avgUnderstand=Avg('understandability'), avgComms=Avg('communication'),
+                                              avgTeachMethod=Avg('teachingMethod'))
+        ratingData['avgUnderstand'] = round(ratingData['avgUnderstand'], 2)
+        ratingData['avgComms'] = round(ratingData['avgComms'], 2)
+        ratingData['avgTeachMethod'] = round(ratingData['avgTeachMethod'], 2)
+        return round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod']) / 3,
+                              2)
+    # The dictionary/Reviews are empty
+    else:
+        return 0
+
+class Teacher:
+    def __init__(self, name, overallRating, picture, lesson):
+        self.name = name
+        self.overallRating = overallRating
+        self.picture = picture
+        self.lesson = lesson
+
 @login_required(login_url='login')
 def index(request):
+    currId = 0
     teachersList = teacherProfile.objects.all()
-    teachReview = reviews.objects.all()
+    teachersAndInfo = []
+    for teacher in teachersList:
+        currId += 1
+        teacherReviews = reviews.objects.filter(teacher_id=currId)
+        teachersAndInfo.append(Teacher(teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+
+    print(teachersAndInfo)
     return render(request, "teacherRater/index.html", {
-        "teacherList": teachersList
+        "teacherList": teachersList,
+        "teacherRatings": teachersAndInfo
     })
 
 @login_required(login_url='login')
 def searchPage(request, searchname):
+    search = []
     searchResult = teacherProfile.objects.filter(name__contains=searchname)
-    print(searchResult)
+    for teacher in searchResult:
+        currId = teacher.pk
+        teacherReviews = reviews.objects.filter(teacher_id=currId)
+        search.append(Teacher(teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+
     return render(request, "teacherRater/searchPage.html", {
-        "search": searchResult
+        "search": search
     })
 
 @login_required(login_url='login')
