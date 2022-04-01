@@ -7,8 +7,17 @@
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-{% for teacher in search %}
-    <h1>{{ teacher.name }}</h1>
-{% endfor %}
+    <nav>
+        <a href="#" class="logo">T A R A</a>
+        <ul class="navigation">
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Highest Rated</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
+    </nav>
+    {% for teacher in search %}
+        <h1>{{ teacher.name }}</h1>
+    {% endfor %}
 </body>
 </html>
