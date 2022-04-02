@@ -47,13 +47,16 @@ def index(request):
     })
 
 @login_required(login_url='login')
-def searchPage(request, searchname):
+def searchPage(request):
+    if request.method == 'GET':
+        searchInput = request.GET.get('searchInput')
+
     search = []
-    searchResult = teacherProfile.objects.filter(name__contains=searchname)
+    searchResult = teacherProfile.objects.filter(name__contains=searchInput)
     for teacher in searchResult:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        search.append(Teacher(teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
 
     return render(request, "teacherRater/searchPage.html", {
         "search": search

@@ -21,12 +21,15 @@
     </nav>
     <div class="mainBody">
         <h1>The Amazing Rating Application</h1>
-        <div class="MainSearch">
-            <input type="text" class="searchTerm" placeholder="Search For A Teacher">
-            <button type="submit" class="searchButton">
-                Go
-            </button>
-        </div>
+        <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
+            <div class="MainSearch">
+                {% csrf_token %}
+                <input name="searchInput" type="text" class="searchTerm" placeholder="Search For A Teacher">
+                <button type="submit" class="searchButton">
+                    Go
+                </button>
+            </div>
+        </form>
 
         <div class="container">
             <div class="main-card">

@@ -70,8 +70,12 @@ nav .search input{
 }
 
 /* Main Searchbar */
-.MainSearch {
+.search-Form{
     width: 50%;
+}
+
+.MainSearch {
+    width: 100%;
     display: flex;
     position: relative;
     margin-top: 25px;
@@ -272,3 +276,4 @@ nav .search input{
 .profile-button{
     text-decoration: none;
 }
+

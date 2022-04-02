@@ -16,28 +16,39 @@
         </ul>
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
-
-
+    <div class="mainBody">
+        <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
+            <div class="MainSearch">
+                {% csrf_token %}
+                <input name="searchInput" type="text" class="searchTerm" placeholder="Search For A Teacher">
+                <button type="submit" class="searchButton">
+                    Go
+                </button>
+            </div>
+        </form>
         <div class="container">
             <div class="main-card">
                 {% for teacher in search %}
-                <div class="cards">
-                    <div class="card">
-                        <div class="content">
-                            <div class="img">
-                                <img src="{{ teacher.picture}}">
-                            </div>
-                            <div class="details">
-                                <div class="name">{{teacher.name}}</div>
-                                <div class="job">{{teacher.lesson}}</div>
-                                <div class="job">{{teacher.overallRating}}</div>
+                    <div class="cards">
+                    <a class="profile-button" href="{% url 'TeacherProfile' teacher.teacherID %}">
+                        <div class="card">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="{{ teacher.picture}}">
+                                </div>
+                                <div class="details">
+                                    <div class="name">{{teacher.name}}</div>
+                                    <div class="job">{{teacher.lesson}}</div>
+                                    <div class="job">{{teacher.overallRating}}</div>
+                                </div>
                             </div>
                         </div>
+                    </a>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
+    </div>
 
 </body>
 </html>
