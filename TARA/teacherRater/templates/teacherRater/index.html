@@ -27,22 +27,27 @@
                 Go
             </button>
         </div>
-        <div class="highSchoolList">
-            {% for teacher in teacherRatings %}
+
+        <div class="container">
             <div class="main-card">
-                <div class="main-card-image" style="background-image: url({{ teacher.picture }})"></div>
-                <div class="main-card-details">
-                    <div class="main-card-name">
-                        <h1>{{ teacher.name }}</h1>
+                {% for teacher in teacherRatings %}
+                <div class="cards">
+                    <div class="card">
+                        <div class="content">
+                            <div class="img">
+                                <img src="{{ teacher.picture}}">
+                            </div>
+                            <div class="details">
+                                <div class="name">{{teacher.name}}</div>
+                                <div class="job">{{teacher.lesson}}</div>
+                                <div class="job">{{teacher.overallRating}}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="main-card-rating">
-                        <h2>Rating: {{ teacher.overallRating }}</h2>
-                    </div>
-                    <h3>Subjects: {{ teacher.lesson }}</h3>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
+
 </body>
 </html>
