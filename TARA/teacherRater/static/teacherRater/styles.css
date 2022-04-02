@@ -119,51 +119,6 @@ nav .search input{
 }
 
 /* Profile Main Cards */
-.highSchoolList{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-}
-
-.main-card{
-  position: relative;
-  display: block;
-  height: 100%;
-  border-radius: 5px
-  overflow: hidden;
-  text-decoration: none;
-  outline: solid 4px #21222d;
-  transition: 0.5s;
-}
-
-.main-card:hover{
-  transform: translateY(-5px) scale(1.005) translateZ(0);
-  box-shadow: 0 24px 36px rgba(0,0,0,0.11), 0 24px 46px var(--box-shadow-color);
-}
-
-.main-card-image{
-    width: 300px;
-    height: 230px;
-    background-repeat: no-repeat;
-    background-position: 0;
-    background-size: cover;
-}
-
-.main-card-details{
-    width: 300px;
-    height: 190px;
-    background-color: #21222d;
-    border-radius: 0;
-    color: white;
-}
-
-.main-card-rating{
-    color: goldenrod;
-    font-size: 100%;
-}
 
 .Logout{
     color: white;
@@ -243,4 +198,72 @@ nav .search input{
 
 .comments-text{
     padding: 15px 15px 15px 0;
+}
+.container{
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.container .main-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+
+}
+#two:checked ~ .main-card{
+  margin-left: -100%;
+}
+.container .main-card .cards{
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+.main-card .cards .card{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+}
+.main-card .cards .card:hover{
+  transform: translateY(-15px);
+}
+.cards .card .content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cards .card .content .img{
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  padding: 3px;
+  background: black;
+  margin-bottom: 14px;
+}
+.card .content .img img{
+  height: 100%;
+  width: 100%;
+  border: 3px solid #ffff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.card .content .name{
+  font-size: 30px;
+  font-weight: 550;
+}
+.card .content .job{
+  font-size: 20px;
+  color: goldenrod;
 }
