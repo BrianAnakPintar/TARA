@@ -260,10 +260,15 @@ nav .search input{
   object-fit: cover;
 }
 .card .content .name{
-  font-size: 30px;
-  font-weight: 550;
+    font-size: 30px;
+    font-weight: 550;
+    color: black;
 }
 .card .content .job{
   font-size: 20px;
   color: goldenrod;
+}
+
+.profile-button{
+    text-decoration: none;
 }

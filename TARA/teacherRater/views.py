@@ -24,7 +24,8 @@ def getOverallReviews(teacherReviews):
         return 0
 
 class Teacher:
-    def __init__(self, name, overallRating, picture, lesson):
+    def __init__(self, teacherID, name, overallRating, picture, lesson):
+        self.teacherID = teacherID
         self.name = name
         self.overallRating = overallRating
         self.picture = picture
@@ -38,9 +39,8 @@ def index(request):
     for teacher in teachersList:
         currId += 1
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        teachersAndInfo.append(Teacher(teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+        teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
 
-    print(teachersAndInfo)
     return render(request, "teacherRater/index.html", {
         "teacherList": teachersList,
         "teacherRatings": teachersAndInfo
