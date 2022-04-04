@@ -6,6 +6,7 @@ from teacherRater.models import teacherProfile, reviews
 from teacherRater.forms import ratingForms
 
 from django.db.models import Avg
+from django.db.models import Count
 # Create your views here.
 
 def getOverallReviews(teacherReviews):
@@ -23,11 +24,19 @@ def getOverallReviews(teacherReviews):
     else:
         return 0
 
+def getReviewCount(teacherReviews):
+    if teacherReviews:
+        totalReview = teacherReviews.aggregate(count=Count('understandability'))
+        return totalReview['count']
+    else:
+        return 0
+
 class Teacher:
-    def __init__(self, teacherID, name, overallRating, picture, lesson):
+    def __init__(self, teacherID, name, overallRating, totalReviews, picture, lesson):
         self.teacherID = teacherID
         self.name = name
         self.overallRating = overallRating
+        self.totalReviews = totalReviews
         self.picture = picture
         self.lesson = lesson
 
@@ -39,7 +48,7 @@ def index(request):
     for teacher in teachersList:
         currId += 1
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+        teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews), teacher.picture, teacher.subjects))
 
     return render(request, "teacherRater/index.html", {
         "teacherList": teachersList,

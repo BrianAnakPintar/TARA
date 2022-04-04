@@ -1,6 +1,6 @@
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: arial;
     text-align: center;
@@ -33,7 +33,7 @@ article h1:after{
     content:"";
     height: 5px;
     width: 225px;
-    background color: black;
+    background-color: black;
     display: block;
     margin: auto;
 }
@@ -83,11 +83,6 @@ article p{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #191b24;
-}
-
-
-body{
-    font-family: Arial;
 }
 
 nav{
