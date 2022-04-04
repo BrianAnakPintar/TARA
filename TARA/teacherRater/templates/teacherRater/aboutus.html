@@ -6,11 +6,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>About Us</title>
     <link href="{% static 'teacherRater/aboutus.css' %}" rel="stylesheet">
-
 </head>
 <body>
+    <nav>
+        <a href="{% url 'index' %}" class="logo">T A<br>R A</a>
+        <ul class="navigation">
+            <li><a href="{% url 'index' %}">Teachers</a></li>
+            <li><a href="{% url 'AboutUsPage' %}">About Us</a></li>
+        </ul>
+        <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
+    </nav>
 
 </body>
 </html>
