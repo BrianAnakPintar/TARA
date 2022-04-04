@@ -39,7 +39,7 @@ understandabilityChoices = [
     (2, '2|Understandable'),
     (3, '3|Easy to understand'),
     (4, '4|Very easy to understand'),
-    (5, '5|I can understand everything the teacher say!')
+    (5, '5|I understand everything')
 ]
 
 communicationChoices = [

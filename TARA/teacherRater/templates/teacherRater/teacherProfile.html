@@ -30,6 +30,50 @@
         </div>
     </div>
 
+
+    <div class="formbutton">
+        <button id="show-form">Submit Your Review</button>
+    </div>
+
+    <div class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="form">
+            <h2>Forms</h2>
+            <form method="POST">
+                <div class="form-element">
+                    {% csrf_token%}
+                    <label>Understandability</label><br>
+                    {{ form.understandability}}<br><br>
+
+                    <label>Communication</label><br>
+                    {{ form.communication }} <br><br>
+
+                    <label>Teaching Method</label><br>
+                    {{ form.teachingMethod}} <br><br>
+
+                    <label>Comment</label><br>
+                    {{ form.commentsReview}} <br><br>
+
+                    <label>Make anonymous</label>
+                    {{ form.makeAnonymous}} <br>
+                    <button type="submit" class="submitform">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector("#show-form").addEventListener("click", function(){
+            document.querySelector(".popup").classList.add("active");
+        });
+
+        document.querySelector(".popup .close-btn").addEventListener("click", function(){
+            document.querySelector(".popup").classList.remove("active");
+        });
+
+    </script>
+
+
     <div class="reviews">
         <!-- Reviews -->
             {% for review in reviews reversed%}
@@ -76,12 +120,6 @@
                 </div>
             {% endfor %}
         </div>
-
-        <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Submit</button>
-        </form>
 
 </body>
 </html>
