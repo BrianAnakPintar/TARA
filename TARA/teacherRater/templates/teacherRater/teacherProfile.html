@@ -64,6 +64,59 @@
         </div>
     </div>
 
+
+
+    <div class="reviews">
+        <!-- Reviews -->
+        <div class="reviewed"><h2>My Review: </h2> </div>
+        {% if myreview%}
+            {% for my in myreview%}
+                <div class="comments">
+                    <div class="comments-informations">
+                        <div class="comments-date-name-part">
+                            <div class="comments-name">
+                                <!-- If Is Anonymous then put Anonymous, else Put user -->
+                                    <h2>{{ my.user }}</h2>
+                            </div>
+                            <div class="comments-date">
+                                <h3>{{ my.date }}</h3>
+                            </div>
+                        </div>
+                    <div class="comments-text">
+                        <p>{{ my.commentReview }}</p>
+                    </div>
+                    </div>
+                <div class="comments-rating">
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ my.understandability }}</h1>
+                        </div>
+                        <h4>Understandability</h4>
+                    </div>
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ my.communication }}</h1>
+                        </div>
+                        <h4>Communication</h4>
+                    </div>
+                    <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ my.teachingMethod }}</h1>
+                        </div>
+                        <h4>Teaching Method</h4>
+                    </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        {% else %}
+        <div class="reviewed"><h2>Not Reviewed Yet</h2></div>
+        {% endif %}
+        </div>
+
+
+
     <div class="formbutton">
         <button class="button-30" id="show-form">Submit Your Review</button>
     </div>

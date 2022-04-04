@@ -118,7 +118,8 @@ def TeacherProfile(request, teacher_id):
         "form": form,
         "reviews": teacherReviews,
         "ratings": ratingData,
-        "overallRating": overallReview
+        "overallRating": overallReview,
+        "myreview": userHasReviewed
     })
 
 def aboutUs(request):
