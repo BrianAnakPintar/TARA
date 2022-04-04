@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav>
-        <a href="{% url 'index' %}" class="logo">T A R A</a>
+        <a href="{% url 'index' %}" class="logo">T A <br>R A</a>
         <ul class="navigation">
             <li><a href="{% url 'index' %}">Teachers</a></li>
             <li><a href="#">About Us</a></li>
@@ -18,21 +18,54 @@
 
     <div class="mainProfileView">
         <div class="profile-part">
-            <img src={{ teacher.picture }} alt="profilePicture">
-            <h1>{{ teacher.name }}</h1>
+            <div class="leftSideProfile">
+                <img class="profile-picture" src={{ teacher.picture }} alt="profilePicture">
+            </div>
+            <div class="rightSideProfile">
+                <h1>{{ teacher.name }}</h1>
+                <p>{{ teacher.comment }}</p>
+                <h3>Subject: {{ teacher.subjects }}</h3>
+                <h3 class="education-text">Education: {{ teacher.education }}</h3>
+            </div>
         </div>
-    </div>
         <div class="Rating">
-            <h2>Overall Rating: {{ overallRating }}</h2>
-            <h2>Understandability: {{ ratings.avgUnderstand }}</h2>
-            <h2>Communication: {{ ratings.avgComms}}</h2>
-            <h2>Teaching Method: {{ ratings.avgTeachMethod }}</h2>
+            <div class="stuff1">
+                <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ overallRating }}</h1>
+                        </div>
+                    <h4>Overall Rating</h4>
+                </div>
+            </div>
+            <div class="stuff2">
+                <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ ratings.avgUnderstand }}</h1>
+                        </div>
+                    <h4>Understandability</h4>
+                </div>
+            </div>
+            <div class="stuff3">
+                <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ ratings.avgComms }}</h1>
+                        </div>
+                    <h4>Communication</h4>
+                </div>
+            </div>
+            <div class="stuff4">
+                <div class="score-Divide">
+                        <div class="rating-number-box">
+                            <h1>{{ ratings.avgTeachMethod }}</h1>
+                        </div>
+                    <h4>Teaching Method</h4>
+                </div>
+            </div>
         </div>
     </div>
-
 
     <div class="formbutton">
-        <button id="show-form">Submit Your Review</button>
+        <button class="button-30" id="show-form">Submit Your Review</button>
     </div>
 
     <div class="popup">
@@ -70,7 +103,6 @@
         document.querySelector(".popup .close-btn").addEventListener("click", function(){
             document.querySelector(".popup").classList.remove("active");
         });
-
     </script>
 
 
