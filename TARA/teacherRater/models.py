@@ -76,7 +76,7 @@ class reviews(models.Model):
     communication = models.PositiveSmallIntegerField(choices=communicationChoices, default=1)
     teachingMethod = models.PositiveSmallIntegerField(choices=teachingMethodChoices, default=1)
     commentReview = models.TextField(max_length=3000, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.teacher}|U:{self.understandability} C:{self.communication} T:{self.teachingMethod}"

@@ -3,6 +3,28 @@
     padding: 0;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #343434;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #565656;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #191b24;
+}
+
+
 body{
     font-family: Arial;
 }
@@ -54,12 +76,28 @@ nav .search input{
     color: white;
 }
 
-.Rating{
-    margin: 10px;
-    border-radius: 10px;
-    background: lightgray;
-    padding: 20px;
+.mainProfileView{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    background: #f6f6f6;
 }
+
+.Rating{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background: #eeeeee;
+    border-radius: 5% 30% 5% 30%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    gap: 5px;
+}
+
 
 .mainBody{;
     display: flex;
@@ -132,11 +170,7 @@ nav .search input{
 .profile-part{
     padding: 50px;
     display: flex;
-    flex-direction: column;
-}
-
-.profile-part img{
-    width: 256px;
+    gap: 25px;
 }
 
 .reviews{
@@ -277,8 +311,13 @@ nav .search input{
     text-decoration: none;
 }
 
+
+
 .formbutton{
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .formbutton button{
     padding: 10px 20px;
@@ -288,10 +327,9 @@ nav .search input{
 
 .popup{
     padding: 20px 20px;
-    opacity: 0%;
+    opacity: 0;
     position: absolute;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-
 }
 
 .popup.active{
@@ -312,18 +350,167 @@ nav .search input{
     right: 10px;
     width:15px;
     height:15px;
-
 }
 
 .popup .close-btn:hover{
     transform: scale(1.5);
+    transition: .5s ease-in-out;
 }
 
 .submitform{
     padding: 10px 20px;
     font-size: 15px;
     font-weight:600;
-
 }
 
+
+.leftSideProfile{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-picture{
+    max-width: 256px;
+    height: 256px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.rightSideProfile{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+}
+
+.rightSideProfile p{
+    margin-bottom: 15px;
+}
+
+.stuff1{
+    width: 150px;
+}
+.stuff2{
+    width: 150px;
+}
+.stuff3{
+    width: 150px;
+}
+.stuff4{
+    margin-top: 20px;
+    width: 150px;
+}
+
+@media only screen and (max-width: 850px) {
+    .mainProfileView{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .profile-part{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rightSideProfile{
+        text-align: center;
+    }
+
+    .education-text{
+        visibility: hidden;
+    }
+
+    .Rating{
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        width: 80%;
+        align-self: center;
+        justify-self: center;
+        margin-top: -50px;
+    }
+
+    .comments{
+        width: 100%;
+        padding: 10px;
+    }
+
+
+    .comments-date-name-part{
+        flex-direction: column;
+    }
+
+    .comments-date{
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .score-Divide{
+        margin: 0 10px;
+    }
+    .score-Divide h4{
+        font-size: small;
+    }
+
+    .popup.active{
+        width: 90%;
+        left: 0;
+    }
+
+    .popup .close-btn{
+        top: 10px;
+        right: 20px;
+        width: auto;
+    }
+}
+
+/* Fancy Button */
+/* CSS */
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
 
