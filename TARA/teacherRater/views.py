@@ -111,3 +111,6 @@ def TeacherProfile(request, teacher_id):
         "ratings": ratingData,
         "overallRating": overallReview
     })
+
+def aboutUs(request):
+    return render(request, "teacherRater/aboutus.html")
