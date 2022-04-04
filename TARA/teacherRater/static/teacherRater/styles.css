@@ -552,3 +552,8 @@ nav .search input{
     color: white;
 
 }
+
+.reviews .reviewed{
+    font-size: 20px;
+    margin-top: 20px;
+}
