@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reviewed</title>
+    <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="review-page">
+    <div class="reviewed">
+        <h1>Oopsies!</h1>
+        <div class="review-img"></div>
+        <div class="review-detail">
+            <h3>You've already submitted a review</h3>
+            <span>Delete your previous review to submit a new one</span> <br>
+            <button type="button" onclick="history.back();">Back</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

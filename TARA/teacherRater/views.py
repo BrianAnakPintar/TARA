@@ -89,7 +89,7 @@ def TeacherProfile(request, teacher_id):
         # If userHasReviewed has a value, then he has reviewed
         if userHasReviewed:
             # This should return a YOU HAVE ALREADY REVIEWED SCREEN
-            return HttpResponse("You already reviewed dummy")
+            return render(request, "teacherRater/reviewerror.html")
         form = ratingForms(request.POST)
         if form.is_valid():
             # Grab information from forms, and save it into the database
