@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from teacherRater.models import teacherProfile, reviews
@@ -18,8 +18,7 @@ def getOverallReviews(teacherReviews):
         ratingData['avgUnderstand'] = round(ratingData['avgUnderstand'], 2)
         ratingData['avgComms'] = round(ratingData['avgComms'], 2)
         ratingData['avgTeachMethod'] = round(ratingData['avgTeachMethod'], 2)
-        return round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod']) / 3,
-                              2)
+        return round((ratingData['avgUnderstand'] + ratingData['avgComms'] + ratingData['avgTeachMethod']) / 3, 2)
     # The dictionary/Reviews are empty
     else:
         return 0
@@ -81,6 +80,9 @@ def TeacherProfile(request, teacher_id):
 
     # Check if teacher has a review
     if teacherReviews:
+        # Find how many reviews
+        reviewCount = getReviewCount(teacherReviews)
+
         # Create Average
         ratingData = teacherReviews.aggregate(avgUnderstand=Avg('understandability'), avgComms=Avg('communication'),
                                               avgTeachMethod=Avg('teachingMethod'))
@@ -93,6 +95,7 @@ def TeacherProfile(request, teacher_id):
     else:
         ratingData = {'avgUnderstand': 0, 'avgComms': 0, 'avgTeachMethod': 0}
         overallReview = 0
+        reviewCount = 0
 
     if request.method == 'POST':
         # If userHasReviewed has a value, then he has reviewed
@@ -110,6 +113,7 @@ def TeacherProfile(request, teacher_id):
             reviewComment = reviews(user=currUser, teacher=currTeacher, isAnonymous=anonym, understandability=cUnderstand, communication=cComms, teachingMethod=cTeachMethod,
                                     commentReview=currCommentReview)
             reviewComment.save()
+            return HttpResponseRedirect('')
     else:
         form = ratingForms()
 
@@ -119,8 +123,19 @@ def TeacherProfile(request, teacher_id):
         "reviews": teacherReviews,
         "ratings": ratingData,
         "overallRating": overallReview,
-        "myreview": userHasReviewed
+        "myreview": userHasReviewed,
+        "reviewCount": reviewCount
     })
 
 def aboutUs(request):
     return render(request, "teacherRater/aboutus.html")
+
+def review_delete(request, teacherId):
+    # Get the review that you want to delete
+    review = reviews.objects.filter(teacher_id=teacherId, user_id=request.user.pk)
+    if request.method == 'POST':
+        # Delete the review
+        review.delete()
+        # Go back to previous page
+        return HttpResponseRedirect('')
+    return redirect(TeacherProfile, teacherId)

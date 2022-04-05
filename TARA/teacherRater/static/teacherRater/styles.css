@@ -253,17 +253,17 @@ nav .search input{
 }
 
 .container .main-card .cards{
-  width: 25%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 20px;
-  justify-content: center;
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    justify-content: center;
     align-items: center;
 }
 .main-card .cards .card{
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 256px;
   background: #f8f8f8;
   border-radius: 12px;
   padding: 30px;
@@ -298,12 +298,12 @@ nav .search input{
   object-fit: cover;
 }
 .card .content .name{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 550;
     color: black;
 }
 .card .content .job{
-  font-size: 20px;
+  font-size: 15px;
   color: goldenrod;
 }
 
@@ -402,6 +402,14 @@ nav .search input{
     width: 150px;
 }
 
+.comments-date-mine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
 @media only screen and (max-width: 850px) {
     .mainProfileView{
         flex-direction: column;
@@ -448,6 +456,11 @@ nav .search input{
         font-weight: normal;
     }
 
+    .comments-date-mine{
+        font-size: 14px;
+        font-weight: normal;
+    }
+
     .score-Divide{
         margin: 0 10px;
     }
@@ -469,49 +482,93 @@ nav .search input{
 
 /* Fancy Button */
 /* CSS */
-.button-30 {
-  align-items: center;
-  appearance: none;
-  background-color: #FCFCFD;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395A;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
-  font-size: 18px;
+/* From cssbuttons.io */
+.fancy {
+ background-color: transparent;
+ border: 2px solid #000;
+ border-radius: 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin: 0;
+ outline: none;
+ overflow: visible;
+ padding: 1em;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ transition: all 0.3s ease-in-out;
+ user-select: none;
+ font-size: 13px;
 }
 
-.button-30:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+.fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
 }
 
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  transform: translateY(-2px);
+.fancy .top-key {
+ height: 2px;
+ width: 1.5625rem;
+ top: -2px;
+ left: 0.625rem;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, left 0.3s ease-out;
 }
 
-.button-30:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
-  transform: translateY(2px);
+.fancy .bottom-key-1 {
+ height: 2px;
+ width: 1.5625rem;
+ right: 1.875rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+ height: 2px;
+ width: 0.625rem;
+ right: 0.625rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+ color: white;
+ background: black;
+}
+
+.fancy:hover::before {
+ width: 0.9375rem;
+ background: white;
+}
+
+.fancy:hover .text {
+ color: white;
+}
+
+.fancy:hover .top-key {
+ left: -2px;
+ width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+ .fancy:hover .bottom-key-2 {
+ right: 0;
+ width: 0;
 }
 
 .review-page{
@@ -542,18 +599,75 @@ nav .search input{
     margin-bottom: 7px;
 }
 
-
-
 .reviewed button{
     margin-top: 10px;
     width: 150px;
     height: 50px;
     background: black;
     color: white;
-
+    cursor: pointer;
+    font-weight: bold;
+    font-size: medium;
 }
 
 .reviews .reviewed{
     font-size: 20px;
     margin-top: 20px;
+}
+
+/* Fancy Remove button */
+/* From cssbuttons.io by @hannahyockel */
+.tooltip {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 1em;
+ border: 0px solid transparent;
+ background-color: rgba(76, 75, 81, 0.08);
+ border-radius: 1.25em;
+ transition: all 0.2s linear;
+}
+
+.tooltip:hover {
+    box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+                8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+                17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+                36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+                99px 72px 143px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+.tooltip {
+ position: relative;
+ display: inline-block;
+}
+
+.tooltip .tooltiptext {
+ visibility: hidden;
+ width: 4em;
+ background-color: rgba(0, 0, 0, 0.5);
+ color: #fff;
+ text-align: center;
+ border-radius: 6px;
+ padding: 5px 0;
+ position: absolute;
+ z-index: 1;
+ top: 25%;
+ left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+ content: "";
+ position: absolute;
+ top: 50%;
+ right: 100%;
+ margin-top: -5px;
+ border-width: 5px;
+ border-style: solid;
+ border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+ visibility: visible;
 }
