@@ -99,7 +99,7 @@ nav .search input{
 }
 
 
-.mainBody{;
+.mainBody{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -477,6 +477,24 @@ nav .search input{
         top: 10px;
         right: 20px;
         width: auto;
+    }
+
+    .main-card .cards .card{
+        width: 100px;
+        max-height: 300px
+    }
+    .card .content .name{
+        font-size: 13px;
+        font-weight: 550;
+        color: black;
+    }
+    .card .content .job{
+        font-size: 13px;
+        color: goldenrod;
+    }
+
+    .mainBody h1{
+        font-size: 30px;
     }
 }
 
