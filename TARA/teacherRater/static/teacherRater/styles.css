@@ -595,6 +595,9 @@ nav .search input{
     margin-bottom: 5px;
 }
 
+.reviewed img{
+    max-width: 200px;
+}
 .reviewed h3{
     margin-bottom: 7px;
 }
