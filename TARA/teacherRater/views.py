@@ -113,7 +113,9 @@ def TeacherProfile(request, teacher_id):
             reviewComment = reviews(user=currUser, teacher=currTeacher, isAnonymous=anonym, understandability=cUnderstand, communication=cComms, teachingMethod=cTeachMethod,
                                     commentReview=currCommentReview)
             reviewComment.save()
-            return HttpResponseRedirect('')
+            # Return redirects automatically "Refreshes the page"
+            # return redirect(TeacherProfile, teacher_id)
+            return render(request, "teacherRater/reviewSuccess.html")
     else:
         form = ratingForms()
 
@@ -137,5 +139,5 @@ def review_delete(request, teacherId):
         # Delete the review
         review.delete()
         # Go back to previous page
-        return HttpResponseRedirect('')
+        return render(request, "teacherRater/deleteSuccess.html", {'teachID': teacherId})
     return redirect(TeacherProfile, teacherId)
