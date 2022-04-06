@@ -410,6 +410,7 @@ nav .search input{
     gap: 20px;
 }
 
+
 @media only screen and (max-width: 850px) {
     .mainProfileView{
         flex-direction: column;
@@ -494,7 +495,15 @@ nav .search input{
     }
 
     .mainBody h1{
-        font-size: 30px;
+        font-size: 26px;
+    }
+
+    .logoText{
+        font-size: 16px;
+    }
+
+    nav{
+        padding: 30px 30px;
     }
 }
 

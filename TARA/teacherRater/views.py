@@ -64,10 +64,11 @@ def searchPage(request):
     for teacher in searchResult:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews) ,teacher.picture, teacher.subjects))
 
     return render(request, "teacherRater/searchPage.html", {
-        "search": search
+        "search": search,
+        "searchText": searchInput
     })
 
 @login_required(login_url='login')

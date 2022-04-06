@@ -35,27 +35,27 @@ class teacherProfile(models.Model):
         return f"{self.id}|{self.name}|Subject:{self.subjects}"
 
 understandabilityChoices = [
-    (1, '1|Hard to understand'),
-    (2, '2|Understandable'),
-    (3, '3|Easy to understand'),
-    (4, '4|Very easy to understand'),
+    (1, '1|Very hard to understand'),
+    (2, '2|Hard to understand'),
+    (3, '3|Understandable'),
+    (4, '4|Easy to understand'),
     (5, '5|I understand everything')
 ]
 
 communicationChoices = [
-    (1, '1|Teacher rarely communicates'),
-    (2, '2|Teacher communicates sometimes'),
-    (3, '3|'),
-    (4, '4|'),
-    (5, '5|')
+    (1, '1|Rarely communicates'),
+    (2, '2|Communicates sometimes'),
+    (3, '3|Average'),
+    (4, '4|Active'),
+    (5, '5|Always answers my questions')
 ]
 
 teachingMethodChoices = [
-    (1, '1'),
-    (2, '2'),
-    (3, '3'),
-    (4, '4'),
-    (5, '5'),
+    (1, '1|Horrible'),
+    (2, '2|Bad'),
+    (3, '3}Average'),
+    (4, '4|Good'),
+    (5, '5|Amazing'),
 
 ]
 
