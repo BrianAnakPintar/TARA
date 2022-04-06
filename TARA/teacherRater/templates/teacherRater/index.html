@@ -20,7 +20,7 @@
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
     <div class="mainBody">
-        <h1>The Amazing Rating Application</h1>
+        <h1 class="TitleTara">The Amazing Rating Application</h1>
         <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
             <div class="MainSearch">
                 {% csrf_token %}
