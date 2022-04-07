@@ -41,11 +41,10 @@ class Teacher:
 
 @login_required(login_url='login')
 def index(request):
-    currId = 0
     teachersList = teacherProfile.objects.all()
     teachersAndInfo = []
     for teacher in teachersList:
-        currId += 1
+        currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
         teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews), teacher.picture, teacher.subjects))
 
