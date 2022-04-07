@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activate TARA Account</title>
+    <style>
+        body{
+            font-family: Arial;
+            }
+
+        .review-page{
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid black;
+            }
+
+        .reviewed{
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            }
+
+        .reviewed h1{
+            font-size: 75px;
+            margin-bottom: 5px;
+            }
+
+        .reviewed h3{
+            margin-bottom: 7px;
+            }
+
+        .reviewed button{
+            margin-top: 10px;
+            width: 150px;
+            height: 50px;
+            background: black;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: medium;
+            margin-bottom: 20px;
+            }
+
+        .reviews .reviewed{
+            font-size: 20px;
+            margin-top: 20px;
+            }
+    </style>
+</head>
+    <body>
+        <div class="review-page">
+            <div class="reviewed">
+                <h1>Verify Account</h1>
+                <div class="review-detail">
+                    <h3>Before you can login, you need to verify your account first</h3>
+                    <span>Click the button to verify your account</span> <br>
+                    <a href ="https://tara-o9od3.ondigitalocean.app/login/verify/{{token}}">
+                        <button>Verify Account</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
