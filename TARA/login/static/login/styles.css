@@ -9,7 +9,7 @@ body{
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background: #e1f2f5;
+  background: #202020;
 }
 .center{
   position: absolute;
@@ -162,7 +162,7 @@ input[type="submit"]:hover{
 }
 
 .leftSideLogin{
-  background-image: url("https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-image: url("https://i.ibb.co/N2F2Qd8/TaraLogo.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 150%;

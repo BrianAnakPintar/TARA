@@ -41,11 +41,10 @@ class Teacher:
 
 @login_required(login_url='login')
 def index(request):
-    currId = 0
     teachersList = teacherProfile.objects.all()
     teachersAndInfo = []
     for teacher in teachersList:
-        currId += 1
+        currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
         teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews), teacher.picture, teacher.subjects))
 
@@ -64,10 +63,11 @@ def searchPage(request):
     for teacher in searchResult:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), teacher.picture, teacher.subjects))
+        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews) ,teacher.picture, teacher.subjects))
 
     return render(request, "teacherRater/searchPage.html", {
-        "search": search
+        "search": search,
+        "searchText": searchInput
     })
 
 @login_required(login_url='login')
@@ -113,7 +113,9 @@ def TeacherProfile(request, teacher_id):
             reviewComment = reviews(user=currUser, teacher=currTeacher, isAnonymous=anonym, understandability=cUnderstand, communication=cComms, teachingMethod=cTeachMethod,
                                     commentReview=currCommentReview)
             reviewComment.save()
-            return HttpResponseRedirect('')
+            # Return redirects automatically "Refreshes the page"
+            # return redirect(TeacherProfile, teacher_id)
+            return render(request, "teacherRater/reviewSuccess.html")
     else:
         form = ratingForms()
 
@@ -137,5 +139,5 @@ def review_delete(request, teacherId):
         # Delete the review
         review.delete()
         # Go back to previous page
-        return HttpResponseRedirect('')
+        return render(request, "teacherRater/deleteSuccess.html", {'teachID': teacherId})
     return redirect(TeacherProfile, teacherId)

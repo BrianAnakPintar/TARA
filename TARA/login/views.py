@@ -3,18 +3,25 @@ from django.contrib import messages
 from .models import *
 import uuid
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib.auth import authenticate, login, logout
-
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
 
 
 def send_mail_after_registration(email, token):
-    subject = 'Your accounts need to be verified'
-    message = 'Hi, click the link to verify your account http://127.0.0.1:8000/login/verify/'+token
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [email]
-    send_mail(subject, message, email_from, recipient_list,  fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=None)
+    recipient_list = email
 
+    html_content = render_to_string("login/Activateaccount.html", {"token": token})
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        "Activate TARA Account",
+        text_content,
+        settings.EMAIL_HOST_USER,
+        [recipient_list]
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.send()
 
 # login page
 def loginpage(request):

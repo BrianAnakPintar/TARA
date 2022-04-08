@@ -6,13 +6,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>TARA | Home</title>
+    <link rel="icon" href="https://i.ibb.co/N2F2Qd8/TaraLogo.jpg" type="image/icon type">
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
 
 </head>
 <body>
     <nav>
-        <a href="{% url 'index' %}" class="logo">T A<br>R A</a>
+        <a href="{% url 'index' %}" class="logo"><h1 class="logoText">T A<br>R A</h1></a>
         <ul class="navigation">
             <li><a href="{% url 'index' %}">Teachers</a></li>
             <li><a href="{% url 'AboutUsPage' %}">About Us</a></li>
@@ -20,11 +21,11 @@
         <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
     </nav>
     <div class="mainBody">
-        <h1>The Amazing Rating Application</h1>
+        <h1 class="TitleTara">The Amazing Rating Application</h1>
         <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
             <div class="MainSearch">
                 {% csrf_token %}
-                <input name="searchInput" type="text" class="searchTerm" placeholder="Search For A Teacher">
+                <input name="searchInput" type="text" class="searchTerm" placeholder="Search Teacher">
                 <button type="submit" class="searchButton">
                     Go
                 </button>

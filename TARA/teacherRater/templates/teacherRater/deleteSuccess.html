@@ -6,20 +6,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TARA | Error</title>
-    <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
+    <title>TARA | Reviewed</title>
     <link rel="icon" href="https://i.ibb.co/N2F2Qd8/TaraLogo.jpg" type="image/icon type">
+    <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
+
 </head>
 <body>
 
 <div class="review-page">
     <div class="reviewed">
-        <h1>Oopsies!</h1>
-        <div class="review-img"><img src="https://c.tenor.com/e3rrT2AEEbEAAAAj/no.gif"></div>
+        <h1>Review Deleted!</h1>
+        <div class="review-img"><img src="https://img.icons8.com/ios-filled/72/delete--v2.gif"></div>
         <div class="review-detail">
-            <h3>You've already submitted a review</h3>
-            <span>Delete your previous review to submit a new one</span> <br>
-            <button type="button" onclick="history.back();">Back</button>
+            <h3>Your review has been removed</h3>
+            <span>You can create a new review</span> <br>
+            <a href="{% url 'TeacherProfile' teachID %}">
+                <button type="button">
+                    Continue
+                </button>
+            </a>
 
         </div>
     </div>
