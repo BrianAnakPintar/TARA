@@ -100,6 +100,10 @@ nav .navigation li a{
     margin-top: 100px;
 }
 
+.mainBody .searchresults{
+    margin-top: 20px;
+}
+
 /* Main Searchbar */
 .search-Form{
     width: 50%;
@@ -257,7 +261,7 @@ nav .navigation li a{
   display: flex;
   flex-wrap: wrap;
   width: 256px;
-  background: #f8f8f8;
+  background: white;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
@@ -322,6 +326,7 @@ nav .navigation li a{
     padding: 20px 20px;
     opacity: 0;
     position: absolute;
+    left: -200%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -647,9 +652,9 @@ nav .navigation li a{
  align-items: center;
  padding: 1em;
  border: 0px solid transparent;
- background-color: rgba(76, 75, 81, 0.08);
+ background-color: #d91d16;
  border-radius: 1.25em;
- transition: all 0.2s linear;
+ transition: all 200ms linear;
 }
 
 .tooltip:hover {
@@ -659,6 +664,8 @@ nav .navigation li a{
                 36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
                 99px 72px 143px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    background-color:rgba(255, 0, 0, 1);
+
 }
 
 .tooltip {
@@ -668,6 +675,7 @@ nav .navigation li a{
 
 .tooltip .tooltiptext {
  visibility: hidden;
+ opacity: 0;
  width: 4em;
  background-color: rgba(0, 0, 0, 0.5);
  color: #f5f5f5;
@@ -678,6 +686,12 @@ nav .navigation li a{
  z-index: 1;
  top: 25%;
  left: 110%;
+    transition: all 200ms ease-in-out 100ms;
+}
+
+.tooltip path{
+    height: 100px;
+    width: 100px;
 }
 
 .tooltip .tooltiptext::after {
@@ -689,8 +703,12 @@ nav .navigation li a{
  border-width: 5px;
  border-style: solid;
  border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
+
 }
 
 .tooltip:hover .tooltiptext {
  visibility: visible;
+ opacity: 1;
+
+
 }

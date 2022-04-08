@@ -7,50 +7,62 @@
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-   <nav>
-        <a href="{% url 'index' %}" class="logo"><h1 class="logoText">T A<br>R A</h1></a>
-        <ul class="navigation">
-            <li><a href="{% url 'index' %}">Teachers</a></li>
-            <li><a href="{% url 'AboutUsPage' %}">About Us</a></li>
-        </ul>
-        <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
-    </nav>
-    <div class="mainBody">
-        <h1 class="TitleTara">The Amazing Rating Application</h1>
-        <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
-            <div class="MainSearch">
-                {% csrf_token %}
-                <input name="searchInput" type="text" class="searchTerm" placeholder="Search Teacher">
-                <button type="submit" class="searchButton">
-                    Go
-                </button>
-            </div>
-        </form>
-        <h3>Search result for: {{ searchText }}</h3>
-        <div class="container">
-            <div class="main-card">
-                {% for teacher in search %}
-                    <div class="cards">
-                    <a class="profile-button" href="{% url 'TeacherProfile' teacher.teacherID %}">
-                        <div class="card">
-                            <div class="content">
-                                <div class="img">
-                                    <img src="{{ teacher.picture}}">
-                                </div>
-                                <div class="details">
-                                    <div class="name">{{teacher.name}}</div>
-                                    <div class="job">{{teacher.lesson}}</div>
-                                    <div class="job">{{teacher.overallRating}}</div>
-                                    <div class="job">Total Reviews: {{ teacher.totalReviews }} </div>
-                                </div>
+<nav>
+    <a href="{% url 'index' %}" class="logo"><h1 class="logoText">T A<br>R A</h1></a>
+    <ul class="navigation">
+        <li><a href="{% url 'index' %}">Teachers</a></li>
+        <li><a href="{% url 'AboutUsPage' %}">About Us</a></li>
+    </ul>
+    <a class="Logout" href="{% url 'logout' %}">Logout from <br>{{request.user}}</a>
+</nav>
+<div class="mainBody">
+    <h1 class="TitleTara">The Amazing Rating Application</h1>
+    <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
+        <div class="MainSearch">
+            {% csrf_token %}
+            <input name="searchInput" type="text" class="searchTerm" placeholder="Search Teacher">
+            <button type="submit" class="searchButton">
+                Go
+            </button>
+        </div>
+    </form>
+    <br>
+    <div class="purpose"><p style="font-size: 25px">Click and Rate your teachers!</p></div>
+    <div class="searchresults">
+        <h3>{% if search %}
+            Search result for: {{ searchText }}
+
+            {% else %}
+            No results found for: {{ searchText }}
+
+            {% endif %}
+        </h3>
+    </div>
+
+    <div class="container">
+        <div class="main-card">
+            {% for teacher in search %}
+            <div class="cards">
+                <a class="profile-button" href="{% url 'TeacherProfile' teacher.teacherID %}">
+                    <div class="card">
+                        <div class="content">
+                            <div class="img">
+                                <img src="{{ teacher.picture}}">
+                            </div>
+                            <div class="details">
+                                <div class="name">{{teacher.name}}</div>
+                                <div class="job">{{teacher.lesson}}</div>
+                                <div class="job">{{teacher.overallRating}}</div>
+                                <div class="job">Total Reviews: {{ teacher.totalReviews }}</div>
                             </div>
                         </div>
-                    </a>
                     </div>
-                {% endfor %}
+                </a>
             </div>
+            {% endfor %}
         </div>
     </div>
+</div>
 
 </body>
 </html>
