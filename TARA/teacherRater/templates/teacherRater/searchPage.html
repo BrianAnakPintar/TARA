@@ -25,6 +25,16 @@
                 Go
             </button>
         </div>
+        <select name="subjects" id="subjects">
+            {% for subject in lessons %}
+                <option value="{{ subject.0 }}">{{ subject.1 }}</option>
+            {% endfor %}
+        </select>
+        <select name="grades" id="grades">
+            {% for grade in grades %}
+                <option value="{{ grade.0 }}">{{ grade.1 }}</option>
+            {% endfor %}
+        </select>
     </form>
     <br>
     <div class="purpose"><p style="font-size: 25px">Click and Rate your teachers!</p></div>

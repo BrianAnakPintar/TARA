@@ -22,11 +22,22 @@ lessonChoices = [
     ('IDK', 'Other')
 ]
 
+Grades = [
+    (7, 'Grade 7'),
+    (8, 'Grade 8'),
+    (9, 'Grade 9'),
+    (10, 'Grade 10'),
+    (11, 'Grade 11'),
+    (12, 'Grade 12'),
+    (0, 'Other')
+]
+
 # Create your models here.
 class teacherProfile(models.Model):
     name = models.CharField(max_length=128)
     picture = models.URLField()
-    comment = models.TextField(max_length=3000)
+    comment = models.TextField(max_length=3000, blank=True)
+    grade = models.IntegerField(choices=Grades, default=0)
     education = models.CharField(max_length=255)
     subjects = models.CharField(max_length=4, choices=lessonChoices, default='IDK')
     isActive = models.BooleanField(default=True)
@@ -43,11 +54,11 @@ understandabilityChoices = [
 ]
 
 communicationChoices = [
-    (1, '1|Rarely communicates'),
-    (2, '2|Communicates sometimes'),
-    (3, '3|Average'),
-    (4, '4|Active'),
-    (5, '5|Always answers my questions')
+    (1, '1|Really bad communication'),
+    (2, '2|Bad communication'),
+    (3, '3|Communicates well'),
+    (4, '4|Communicates really well'),
+    (5, '5|Communicates clearly and often')
 ]
 
 teachingMethodChoices = [
@@ -55,18 +66,10 @@ teachingMethodChoices = [
     (2, '2|Bad'),
     (3, '3}Average'),
     (4, '4|Good'),
-    (5, '5|Amazing'),
-
+    (5, '5|Amazing')
 ]
 
-# Should prob delete this
-RatingChoices = [
-    (1, 'Awful'),
-    (2, 'Ok'),
-    (3, 'Good'),
-    (4, 'Very Good'),
-    (5, 'Amazing!')
-]
+
 
 class reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

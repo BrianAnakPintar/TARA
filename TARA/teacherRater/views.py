@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from teacherRater.models import teacherProfile, reviews
+from teacherRater.models import teacherProfile, reviews, lessonChoices, Grades
 from teacherRater.forms import ratingForms
 
 from django.db.models import Avg
@@ -50,7 +50,9 @@ def index(request):
 
     return render(request, "teacherRater/index.html", {
         "teacherList": teachersList,
-        "teacherRatings": teachersAndInfo
+        "teacherRatings": teachersAndInfo,
+        "lessons": lessonChoices,
+        "grades": Grades
     })
 
 @login_required(login_url='login')
@@ -67,7 +69,9 @@ def searchPage(request):
 
     return render(request, "teacherRater/searchPage.html", {
         "search": search,
-        "searchText": searchInput
+        "searchText": searchInput,
+        "lessons": lessonChoices,
+        "grades": Grades
     })
 
 @login_required(login_url='login')
