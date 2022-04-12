@@ -59,9 +59,21 @@ def index(request):
 def searchPage(request):
     if request.method == 'GET':
         searchInput = request.GET.get('searchInput')
+        categoryLesson = request.GET.get('categoryLesson')
+        categoryGrade = request.GET.get('categoryGrade')
 
     search = []
-    searchResult = teacherProfile.objects.filter(name__contains=searchInput)
+    searchResult = teacherProfile.objects.filter(name__contains=searchInput, subjects__contains=categoryLesson,
+                                                 grade__contains=categoryGrade)
+    if categoryLesson and categoryGrade == "All":
+        searchResult = teacherProfile.objects.filter(name__contains=searchInput)
+
+    if categoryGrade == "All" and categoryLesson != "All":
+        searchResult = teacherProfile.objects.filter(name__contains=searchInput, subjects__contains=categoryLesson)
+
+    if categoryLesson == "All" and categoryGrade != "All":
+        searchResult = teacherProfile.objects.filter(name__contains=searchInput, grade__contains=categoryGrade)
+
     for teacher in searchResult:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)

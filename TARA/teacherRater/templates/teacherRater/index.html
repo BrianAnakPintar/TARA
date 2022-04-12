@@ -23,21 +23,21 @@
 <div class="mainBody">
     <h1 class="TitleTara">The Amazing Rating Application</h1>
     <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
-        {% csrf_token %}
         <div class="MainSearch">
+            {% csrf_token %}
             <input name="searchInput" type="text" class="searchTerm" placeholder="Search Teacher">
             <button type="submit" class="searchButton">
                 Go
             </button>
         </div>
-        <select name="subjects" id="subjects">
-            {% for subject in lessons %}
-                <option value="{{ subject.0 }}">{{ subject.1 }}</option>
+        <select name="categoryLesson" class="categoryLesson">
+            {% for lesson in lessons %}
+            <option value="{{lesson.0}}">{{lesson.1}}</option>
             {% endfor %}
         </select>
-        <select name="grades" id="grades">
+        <select name="categoryGrade" class="categoryGrade">
             {% for grade in grades %}
-                <option value="{{ grade.0 }}">{{ grade.1 }}</option>
+            <option value="{{grade.0}}">{{grade.1}}</option>
             {% endfor %}
         </select>
     </form>
