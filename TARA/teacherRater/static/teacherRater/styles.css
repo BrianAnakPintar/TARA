@@ -295,13 +295,43 @@ nav .navigation li a{
   object-fit: cover;
 }
 .card .content .name{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 550;
     color: #202020;
 }
 .card .content .job{
-  font-size: 15px;
+  font-size: 20px;
   color: goldenrod;
+}
+
+.categoryGrade{
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  margin: 5px;
+  position: relative;
+  bottom: 31px;
+  left: 200px;
+}
+
+h3{
+    font-size: 15px;
+    margin: 10px;
+}
+
+
+.categoryLesson{
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  margin: 5px;
+  position: static;
+
+
 }
 
 .profile-button{
