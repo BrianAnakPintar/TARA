@@ -31,11 +31,13 @@
             </button>
         </div>
         <select name="categoryLesson" class="categoryLesson">
+            <option value="All">All</option>
             {% for lesson in lessons %}
             <option value="{{lesson.0}}">{{lesson.1}}</option>
             {% endfor %}
         </select>
         <select name="categoryGrade" class="categoryGrade">
+            <option value="All">All</option>
             {% for grade in grades %}
             <option value="{{grade.0}}">{{grade.1}}</option>
             {% endfor %}
@@ -58,6 +60,7 @@
                                 <div class="job">{{teacher.lesson}}</div>
                                 <div class="job">{{teacher.overallRating}}</div>
                                 <div class="job">Total Reviews: {{ teacher.totalReviews }}</div>
+                                <div class="job">Grade {{ teacher.grade }}</div>
                             </div>
                         </div>
                     </div>

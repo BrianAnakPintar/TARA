@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 
 lessonChoices = [
-    ('All', 'All'),
     ('ACC', 'Akuntansi'),
     ('ART', 'Art'),
     ('BI', 'Bahasa Indonesia'),
@@ -24,7 +23,6 @@ lessonChoices = [
 ]
 
 Grades = [
-    ('All', 'All'),
     (7, 'Grade 7'),
     (8, 'Grade 8'),
     (9, 'Grade 9'),

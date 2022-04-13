@@ -31,13 +31,14 @@ def getReviewCount(teacherReviews):
         return 0
 
 class Teacher:
-    def __init__(self, teacherID, name, overallRating, totalReviews, picture, lesson):
+    def __init__(self, teacherID, name, overallRating, totalReviews, picture, lesson, grade):
         self.teacherID = teacherID
         self.name = name
         self.overallRating = overallRating
         self.totalReviews = totalReviews
         self.picture = picture
         self.lesson = lesson
+        self.grade = grade
 
 @login_required(login_url='login')
 def index(request):
@@ -46,7 +47,7 @@ def index(request):
     for teacher in teachersList:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews), teacher.picture, teacher.subjects))
+        teachersAndInfo.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews), teacher.picture, teacher.subjects, teacher.grade))
 
     return render(request, "teacherRater/index.html", {
         "teacherList": teachersList,
@@ -77,7 +78,7 @@ def searchPage(request):
     for teacher in searchResult:
         currId = teacher.pk
         teacherReviews = reviews.objects.filter(teacher_id=currId)
-        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews) ,teacher.picture, teacher.subjects))
+        search.append(Teacher(teacher.pk, teacher.name, getOverallReviews(teacherReviews), getReviewCount(teacherReviews) ,teacher.picture, teacher.subjects, teacher.grade))
 
     return render(request, "teacherRater/searchPage.html", {
         "search": search,
