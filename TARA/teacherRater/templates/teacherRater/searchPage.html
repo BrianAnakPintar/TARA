@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>TARA | Search</title>
     <link href="{% static 'teacherRater/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <nav>
@@ -17,26 +18,55 @@
 </nav>
 <div class="mainBody">
     <h1 class="TitleTara">The Amazing Rating Application</h1>
-    <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
+        <form class="search-Form" method="get" action="{% url 'SearchPage' %}">
         <div class="MainSearch">
             {% csrf_token %}
+
+
+            <button class="filtersearch" type="button" id="show-form">
+                <i style="font-size: 17px;" class="fa fa-filter"></i>
+            </button>
             <input name="searchInput" type="text" class="searchTerm" placeholder="Search Teacher">
             <button type="submit" class="searchButton">
                 Go
             </button>
         </div>
-        <select name="categoryLesson" class="categoryLesson">
-            <option value="All">All</option>
-            {% for lesson in lessons %}
-            <option value="{{lesson.0}}">{{lesson.1}}</option>
-            {% endfor %}
-        </select>
-        <select name="categoryGrade" class="categoryGrade">
-            <option value="All">All</option>
-            {% for grade in grades %}
-            <option value="{{grade.0}}">{{grade.1}}</option>
-            {% endfor %}
-        </select>
+
+        <div class="searchpopup">
+            <div class="close-btn">&times;</div>
+            <div class="form">
+
+                <div class="lesson">
+                    <h3>Filters:</h3>
+                    <select name="categoryLesson" class="categoryLesson">
+                        <option value="All">All</option>
+                        {% for lesson in lessons %}
+                        <option value="{{lesson.0}}">{{lesson.1}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="grade">
+                    <select name="categoryGrade" class="categoryGrade">
+                        <option value="All">All</option>
+                        {% for grade in grades %}
+                        <option value="{{grade.0}}">{{grade.1}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.querySelector("#show-form").addEventListener("click", function(){
+            document.querySelector(".searchpopup").classList.add("active");
+        });
+
+        document.querySelector(".searchpopup .close-btn").addEventListener("click", function(){
+            document.querySelector(".searchpopup").classList.remove("active");
+        });
+        </script>
+
     </form>
     <br>
     <div class="purpose"><p style="font-size: 25px">Click and Rate your teachers!</p></div>
