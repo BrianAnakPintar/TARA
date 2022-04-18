@@ -508,6 +508,32 @@ h3{
         padding: 10px;
     }
 
+    .purpose{
+       margin: 1px;
+       top: 30px;
+    }
+
+    .categoryGrade{
+      background-color: white;
+      font-size: 15px;
+      color: black;
+      border-radius: 10px;
+      display: flex;
+      margin: 45px 45px -20px 45px;
+      position: relative;
+      left: -35px;
+      bottom: 30px;
+    }
+
+    .categoryLesson{
+      background-color: white;
+      font-size: 15px;
+      color: black;
+      border-radius: 10px;
+      display: flex;
+      position: static;
+      margin-left: 10px;
+    }
 
     .comments-date-name-part{
         flex-direction: column;
