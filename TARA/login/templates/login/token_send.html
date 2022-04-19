@@ -22,9 +22,12 @@
         <h1>Email Sent</h1>
         <div class="review-img"><img src="https://media4.giphy.com/media/l0JM83bF1jbRsTnNu/200w.webp?cid=ecf05e473zjep5xaxhubyl5ia2hr55c5hut5wfvglxzjqwx5&rid=200w.webp&ct=g"></div>
         <div class="review-detail">
-            <h3>You need to verify your email</h3>
-            <span>Check your email inbox and click the link provided</span> <br>
-            <button type="button" onclick="history.back();">Continue</button>
+            <h3>Check your Email Inbox</h3>
+            <span>It might take up to 5 minutes for the email to show up in your inbox</span> <br>
+            <a href="{% url 'login' %}">
+                <button type="button">Continue</button>
+            </a>
+
 
         </div>
     </div>

@@ -7,6 +7,17 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib.auth import authenticate, login, logout
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
+import threading
+
+
+class EmailThread(threading.Thread):
+
+    def __init__(self, email):
+        self.email = email
+        threading.Thread.__init__(self)
+
+    def run(self):
+        self.email.send()
 
 
 def send_mail_after_registration(email, token):
@@ -21,7 +32,7 @@ def send_mail_after_registration(email, token):
         [recipient_list]
     )
     email.attach_alternative(html_content, "text/html")
-    email.send()
+    EmailThread(email).start()
 
 # login page
 def loginpage(request):
