@@ -85,7 +85,7 @@ def register(request):
         profile_obj = Profile.objects.create(user=user_obj, auth_token=auth_token)
         profile_obj.save()
         send_mail_after_registration(email, auth_token)
-        return redirect('token_send')
+        return redirect(token_send, username)
 
     except Exception as e:
         print(e)
@@ -94,9 +94,13 @@ def register(request):
 
 
 
-def token_send(request):
-    return render(request, 'login/token_send.html')
+def token_send(request, username):
+    user = User.objects.get(username=username)
+    ProfileUser = Profile.objects.get(user=user)
+    if request.method == 'POST':
+        send_mail_after_registration(user.email, ProfileUser.auth_token)
 
+    return render(request, 'login/token_send.html', {'user': user})
 
 def verify(request, auth_token):
     try:

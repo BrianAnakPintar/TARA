@@ -28,7 +28,10 @@
                 <button type="button">Continue</button>
             </a>
 
-
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <button type="submit">Resend Email</button>
+            </form>
         </div>
     </div>
 </div>
