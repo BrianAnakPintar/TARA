@@ -72,9 +72,14 @@ nav .navigation li a{
 .mainProfileView{
     width: 100%;
     display: flex;
-    justify-content: space-between;
     background: #ebebeb;
+    gap: 50px;
 }
+
+.TitleTara{
+    text-align: center;
+}
+
 
 .Rating{
     display: flex;
@@ -85,7 +90,6 @@ nav .navigation li a{
     align-items: center;
     width: 25%;
     background: #ebebeb;
-    border-radius: 5% 30% 5% 30%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-right: 50px;
     gap: 5px;
@@ -306,14 +310,11 @@ nav .navigation li a{
 
 .categoryGrade{
   background-color: white;
-  font-size: 20px;
+    font-size: 16px;
   color: black;
   border-radius: 10px;
   display: flex;
-  margin: 5px;
   position: relative;
-  bottom: 31px;
-  left: 200px;
 }
 
 h3{
@@ -324,12 +325,10 @@ h3{
 
 .categoryLesson{
   background-color: white;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   border-radius: 10px;
   display: flex;
-  margin: 5px;
-  position: static;
 
 
 }
@@ -471,11 +470,26 @@ h3{
     gap: 20px;
 }
 
+.filters-cat{
+    display: flex;
+    gap: 25px;
+}
+
+
+@media screen and (max-width: 1200px){
+    .profile-part{
+        width: 50%;
+    }
+}
+
 
 @media only screen and (max-width: 850px) {
     .mainProfileView{
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 100%;
+        gap: 0;
     }
 
     .profile-part{
@@ -503,6 +517,9 @@ h3{
         margin-top: -50px;
     }
 
+    .comments-text p{
+        text-align: center;
+    }
     .comments{
         width: 100%;
         padding: 10px;
@@ -511,28 +528,6 @@ h3{
     .purpose{
        margin: 1px;
        top: 30px;
-    }
-
-    .categoryGrade{
-      background-color: white;
-      font-size: 15px;
-      color: black;
-      border-radius: 10px;
-      display: flex;
-      margin: 45px 45px -20px 45px;
-      position: relative;
-      left: -35px;
-      bottom: 30px;
-    }
-
-    .categoryLesson{
-      background-color: white;
-      font-size: 15px;
-      color: black;
-      border-radius: 10px;
-      display: flex;
-      position: static;
-      margin-left: 10px;
     }
 
     .comments-date-name-part{
@@ -592,7 +587,14 @@ h3{
     nav{
         padding: 30px 30px;
     }
+
+    .filters-cat{
+        flex-direction: column;
+        gap: 7px;
+    }
 }
+
+
 
 /* Fancy Button */
 /* CSS */
@@ -763,18 +765,18 @@ h3{
 }
 
 .tooltip .tooltiptext {
- visibility: hidden;
- opacity: 0;
- width: 4em;
- background-color: rgba(0, 0, 0, 0.5);
- color: #f5f5f5;
- text-align: center;
- border-radius: 6px;
- padding: 5px 0;
- position: absolute;
- z-index: 1;
- top: 25%;
- left: 110%;
+    visibility: hidden;
+    opacity: 0;
+    width: 4em;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 110%;
     transition: all 200ms ease-in-out 100ms;
 }
 
@@ -812,5 +814,6 @@ h3{
     margin-right: 2px;
     outline: none;
     color: #202020;
-
+    cursor: pointer;
 }
+
