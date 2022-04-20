@@ -235,7 +235,6 @@ i{
         border-radius: 1rem;
         align-items: center;
         min-height: 200px;
-        background: #b33333;
     }
 
     .section:nth-child(odd){
