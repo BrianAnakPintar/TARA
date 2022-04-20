@@ -28,10 +28,39 @@
                 <button type="button">Continue</button>
             </a>
 
+            <script type="text/javascript">
+                setTimeout (function(){
+                document.getElementById('submitButton').disabled = null;
+                },63200);
+
+                var countdownNum = 60;
+                incTimer();
+
+                function incTimer(){
+                setTimeout (function(){
+                    if(countdownNum != 0){
+                    countdownNum--;
+                    document.getElementById('timeLeft').innerHTML = 'Time left: ' + countdownNum + ' seconds';
+                    incTimer();
+                    } else {
+                    document.getElementById('timeLeft').innerHTML = 'Click the button to resend the verification email';
+                    }
+                },1000);
+                }
+            </script>
+
             <form action="#" method="POST">
                 {% csrf_token %}
-                <button type="submit">Resend Email</button>
+                <input type="submit" disabled="disabled" id="submitButton" value="Resend Email" class="resendbtn" />
+                <p id="timeLeft">Time left: 60 seconds</p>
             </form>
+
+
+            <div class="errorMessages">
+                {%for message in messages%}
+                    {{message}}
+                {%endfor%}
+            </div>
         </div>
     </div>
 </div>

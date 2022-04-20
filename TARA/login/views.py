@@ -93,14 +93,15 @@ def register(request):
     return render(request, 'login/register.html')
 
 
-
 def token_send(request, username):
     user = User.objects.get(username=username)
     ProfileUser = Profile.objects.get(user=user)
     if request.method == 'POST':
         send_mail_after_registration(user.email, ProfileUser.auth_token)
+        messages.success(request, "Email has been resent")
 
     return render(request, 'login/token_send.html', {'user': user})
+
 
 def verify(request, auth_token):
     try:
