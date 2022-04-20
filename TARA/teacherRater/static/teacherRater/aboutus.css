@@ -189,6 +189,10 @@ i{
     font-size: 20px !important;
 }
 
+.names-bottom{
+    text-align: justify;
+}
+
 
 @media only screen and (max-width: 850px) {
     .logoText{
@@ -208,4 +212,57 @@ i{
     font-size: 10px !important;
     }
 }
+
+@media (orientation: portrait){
+    body{
+        overflow-x: hidden;
+    }
+
+    .logoText{
+        font-size: 16px;
+        width: 201%;
+    }
+
+    .section{
+        display: flex;
+        opacity: 0;
+        transform: translateX(0);
+        transition: 600ms ease;
+        position: relative;
+        z-index: 1;
+        margin: 40px 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        align-items: center;
+        min-height: 200px;
+        background: #b33333;
+    }
+
+    .section:nth-child(odd){
+        flex-direction: row;
+        transform: translateX(0);
+    }
+
+    .line{
+        visibility: hidden;
+    }
+
+    .bead{
+        visibility: hidden;
+    }
+
+    .content{
+        width: 100%;
+    }
+
+    .bottom-section{
+        width: 100%;
+    }
+
+    .names-bottom{
+        text-align: left;
+    }
+}
+
+
 

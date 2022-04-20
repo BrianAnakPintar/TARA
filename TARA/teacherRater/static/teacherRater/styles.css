@@ -475,13 +475,24 @@ h3{
     gap: 25px;
 }
 
+@media (orientation: portrait){
+    body{
+        overflow-x: hidden;
+    }
+
+    .logoText{
+        font-size: 16px;
+        width: 201%;
+    }
+}
+
+
 
 @media screen and (max-width: 1200px){
     .profile-part{
         width: 50%;
     }
 }
-
 
 @media only screen and (max-width: 850px) {
     .mainProfileView{
@@ -526,8 +537,8 @@ h3{
     }
 
     .purpose{
-       margin: 1px;
-       top: 30px;
+        margin-top: 20px;
+        text-align: center;
     }
 
     .comments-date-name-part{
@@ -594,7 +605,11 @@ h3{
     }
 }
 
-
+@media (orientation: portrait){
+    .Rating{
+        width: 100%;
+    }
+}
 
 /* Fancy Button */
 /* CSS */
