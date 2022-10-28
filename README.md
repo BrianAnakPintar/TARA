@@ -7,6 +7,9 @@ Application is currently not being hosted
 ## What is this project?
 This is a simple web application made during Grade 12 as a fun project which recreates https://www.ratemyprofessors.com/.com but implemented for a local high school. It is made using Django, which was hosted using DigitalOcean
 
+## Settings.py?
+We removed settings.py as it contains sensitive information
+
 Rules:
 1. Please don't mess up anything
 2. Before working on your part, make sure to pull the latest repository
